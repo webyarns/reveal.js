@@ -3734,17 +3734,25 @@
 
 	}
 
+    function noOfHiddenLeft(){
+        return  $("section.present").prev("section[data-hidden-section]").length +1;
+    }
+
+    function noOfHiddenRight(){
+        return $("section.present+section[data-hidden-section]").length +1;
+    }
+
 	function navigateLeft() {
 
 		// Reverse for RTL
 		if( config.rtl ) {
 			if( ( isOverview() || nextFragment() === false ) && availableRoutes().left ) {
-				slide( indexh + 1 );
+                slide( indexh + noOfHiddenLeft() );
 			}
 		}
 		// Normal navigation
 		else if( ( isOverview() || previousFragment() === false ) && availableRoutes().left ) {
-			slide( indexh - 1 );
+            slide( indexh - noOfHiddenLeft() );
 		}
 
 	}
@@ -3754,12 +3762,12 @@
 		// Reverse for RTL
 		if( config.rtl ) {
 			if( ( isOverview() || previousFragment() === false ) && availableRoutes().right ) {
-				slide( indexh - 1 );
+                slide( indexh - noOfHiddenRight() );
 			}
 		}
 		// Normal navigation
 		else if( ( isOverview() || nextFragment() === false ) && availableRoutes().right ) {
-			slide( indexh + 1 );
+            slide( indexh + noOfHiddenRight() );
 		}
 
 	}
