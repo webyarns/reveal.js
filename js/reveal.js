@@ -3745,10 +3745,17 @@
 	}
 
     function noOfHiddenLeft(){
+
+		function f($t,a){
+			var r = $t.prev("section[data-hidden-section]").length;
+			r = r + $t.prev("section[data-right-only-section]").length;
+			if ( r > 0 )
+				return f($t.prev(),a + r);
+			else
+				return a;
+		}
 		var presentSection = $("section.present");
-		var hiddenSections = presentSection.prev("section[data-hidden-section]").length;
-		var rightOnlyNavs = presentSection.prev("section[data-right-only-section]").length;
-        return  rightOnlyNavs + hiddenSections + 1;
+		return  f(presentSection,0)+1;
     }
 
     function noOfHiddenRight(){
