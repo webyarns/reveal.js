@@ -3759,7 +3759,7 @@
     }
 
     function noOfHiddenRight(){
-        return $("section.present+section[data-hidden-section]").length +1;
+        return $("section.present").nextAll("[data-hidden-section]").length +1;
     }
 
 	function navigateLeft() {
