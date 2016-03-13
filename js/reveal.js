@@ -30,7 +30,7 @@
 		VERTICAL_SLIDES_SELECTOR = '.slides>section.present>section',
 		HOME_SLIDE_SELECTOR = '.slides>section:first-of-type',
 
-		// Configuration defaults, can be overridden at initialization time
+	// Configuration defaults, can be overridden at initialization time
 		config = {
 
 			// The "normal" size of the presentation, aspect ratio will be preserved
@@ -151,62 +151,62 @@
 
 		},
 
-		// Flags if reveal.js is loaded (has dispatched the 'ready' event)
+	// Flags if reveal.js is loaded (has dispatched the 'ready' event)
 		loaded = false,
 
-		// Flags if the overview mode is currently active
+	// Flags if the overview mode is currently active
 		overview = false,
 
-		// The horizontal and vertical index of the currently active slide
+	// The horizontal and vertical index of the currently active slide
 		indexh,
 		indexv,
 
-		// The previous and current slide HTML elements
+	// The previous and current slide HTML elements
 		previousSlide,
 		currentSlide,
 
 		previousBackground,
 
-		// Slides may hold a data-state attribute which we pick up and apply
-		// as a class to the body. This list contains the combined state of
-		// all current slides.
+	// Slides may hold a data-state attribute which we pick up and apply
+	// as a class to the body. This list contains the combined state of
+	// all current slides.
 		state = [],
 
-		// The current scale of the presentation (see width/height config)
+	// The current scale of the presentation (see width/height config)
 		scale = 1,
 
-		// CSS transform that is currently applied to the slides container,
-		// split into two groups
+	// CSS transform that is currently applied to the slides container,
+	// split into two groups
 		slidesTransform = { layout: '', overview: '' },
 
-		// Cached references to DOM elements
+	// Cached references to DOM elements
 		dom = {},
 
-		// Features supported by the browser, see #checkCapabilities()
+	// Features supported by the browser, see #checkCapabilities()
 		features = {},
 
-		// Client is a mobile device, see #checkCapabilities()
+	// Client is a mobile device, see #checkCapabilities()
 		isMobileDevice,
 
-		// Throttles mouse wheel navigation
+	// Throttles mouse wheel navigation
 		lastMouseWheelStep = 0,
 
-		// Delays updates to the URL due to a Chrome thumbnailer bug
+	// Delays updates to the URL due to a Chrome thumbnailer bug
 		writeURLTimeout = 0,
 
-		// Flags if the interaction event listeners are bound
+	// Flags if the interaction event listeners are bound
 		eventsAreBound = false,
 
-		// The current auto-slide duration
+	// The current auto-slide duration
 		autoSlide = 0,
 
-		// Auto slide properties
+	// Auto slide properties
 		autoSlidePlayer,
 		autoSlideTimeout = 0,
 		autoSlideStartTime = -1,
 		autoSlidePaused = false,
 
-		// Holds information about the currently ongoing touch input
+	// Holds information about the currently ongoing touch input
 		touch = {
 			startX: 0,
 			startY: 0,
@@ -217,7 +217,7 @@
 			needToPlay: false
 		},
 
-		// Holds information about the keyboard shortcuts
+	// Holds information about the keyboard shortcuts
 		keyboardShortcuts = {
 			'N  ,  SPACE':			'Next slide',
 			'P':					'Previous slide',
@@ -294,16 +294,16 @@
 	function checkCapabilities() {
 
 		features.transforms3d = 'WebkitPerspective' in document.body.style ||
-								'MozPerspective' in document.body.style ||
-								'msPerspective' in document.body.style ||
-								'OPerspective' in document.body.style ||
-								'perspective' in document.body.style;
+			'MozPerspective' in document.body.style ||
+			'msPerspective' in document.body.style ||
+			'OPerspective' in document.body.style ||
+			'perspective' in document.body.style;
 
 		features.transforms2d = 'WebkitTransform' in document.body.style ||
-								'MozTransform' in document.body.style ||
-								'msTransform' in document.body.style ||
-								'OTransform' in document.body.style ||
-								'transform' in document.body.style;
+			'MozTransform' in document.body.style ||
+			'msTransform' in document.body.style ||
+			'OTransform' in document.body.style ||
+			'transform' in document.body.style;
 
 		features.requestAnimationFrameMethod = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
 		features.requestAnimationFrame = typeof features.requestAnimationFrameMethod === 'function';
@@ -320,13 +320,13 @@
 
 	}
 
-    /**
-     * Loads the dependencies of reveal.js. Dependencies are
-     * defined via the configuration option 'dependencies'
-     * and will be loaded prior to starting/binding reveal.js.
-     * Some dependencies may have an 'async' flag, if so they
-     * will load after reveal.js has been started up.
-     */
+	/**
+	 * Loads the dependencies of reveal.js. Dependencies are
+	 * defined via the configuration option 'dependencies'
+	 * and will be loaded prior to starting/binding reveal.js.
+	 * Some dependencies may have an 'async' flag, if so they
+	 * will load after reveal.js has been started up.
+	 */
 	function load() {
 
 		var scripts = [],
@@ -784,14 +784,14 @@
 		// the same.
 		if( data.background || data.backgroundColor || data.backgroundImage || data.backgroundVideo || data.backgroundIframe ) {
 			element.setAttribute( 'data-background-hash', data.background +
-															data.backgroundSize +
-															data.backgroundImage +
-															data.backgroundVideo +
-															data.backgroundIframe +
-															data.backgroundColor +
-															data.backgroundRepeat +
-															data.backgroundPosition +
-															data.backgroundTransition );
+				data.backgroundSize +
+				data.backgroundImage +
+				data.backgroundVideo +
+				data.backgroundIframe +
+				data.backgroundColor +
+				data.backgroundRepeat +
+				data.backgroundPosition +
+				data.backgroundTransition );
 		}
 
 		// Additional and optional background properties
@@ -1467,12 +1467,12 @@
 
 		dom.overlay.innerHTML = [
 			'<header>',
-				'<a class="close" href="#"><span class="icon"></span></a>',
-				'<a class="external" href="'+ url +'" target="_blank"><span class="icon"></span></a>',
+			'<a class="close" href="#"><span class="icon"></span></a>',
+			'<a class="external" href="'+ url +'" target="_blank"><span class="icon"></span></a>',
 			'</header>',
 			'<div class="spinner"></div>',
 			'<div class="viewport">',
-				'<iframe src="'+ url +'"></iframe>',
+			'<iframe src="'+ url +'"></iframe>',
 			'</div>'
 		].join('');
 
@@ -1520,10 +1520,10 @@
 
 			dom.overlay.innerHTML = [
 				'<header>',
-					'<a class="close" href="#"><span class="icon"></span></a>',
+				'<a class="close" href="#"><span class="icon"></span></a>',
 				'</header>',
 				'<div class="viewport">',
-					'<div class="viewport-inner">'+ html +'</div>',
+				'<div class="viewport-inner">'+ html +'</div>',
 				'</div>'
 			].join('');
 
@@ -1979,10 +1979,10 @@
 
 		// Check which implementation is available
 		var requestMethod = element.requestFullScreen ||
-							element.webkitRequestFullscreen ||
-							element.webkitRequestFullScreen ||
-							element.mozRequestFullScreen ||
-							element.msRequestFullscreen;
+			element.webkitRequestFullscreen ||
+			element.webkitRequestFullScreen ||
+			element.mozRequestFullScreen ||
+			element.msRequestFullscreen;
 
 		if( requestMethod ) {
 			requestMethod.apply( element );
@@ -2168,13 +2168,13 @@
 		// Dispatch an event if the slide changed
 		var slideChanged = ( indexh !== indexhBefore || indexv !== indexvBefore );
 		if( slideChanged ) {
-            touch.needToPlay = {
-                'indexh': indexh,
-                'indexv': indexv,
-                'previousSlide': previousSlide,
-                'currentSlide': currentSlide,
-                'origin': o
-            }; // rp:set flag
+			touch.needToPlay = {
+				'indexh': indexh,
+				'indexv': indexv,
+				'previousSlide': previousSlide,
+				'currentSlide': currentSlide,
+				'origin': o
+			}; // rp:set flag
 
 
 			dispatchEvent( 'slidechanged', {
@@ -2599,8 +2599,8 @@
 
 		if( typeof b === 'number' && !isNaN( b ) ) {
 			return  '<span class="slide-number-a">'+ a +'</span>' +
-					'<span class="slide-number-delimiter">'+ delimiter +'</span>' +
-					'<span class="slide-number-b">'+ b +'</span>';
+				'<span class="slide-number-delimiter">'+ delimiter +'</span>' +
+				'<span class="slide-number-b">'+ b +'</span>';
 		}
 		else {
 			return '<span class="slide-number-a">'+ a +'</span>';
@@ -2618,10 +2618,10 @@
 
 		// Remove the 'enabled' class from all directions
 		dom.controlsLeft.concat( dom.controlsRight )
-						.concat( dom.controlsUp )
-						.concat( dom.controlsDown )
-						.concat( dom.controlsPrev )
-						.concat( dom.controlsNext ).forEach( function( node ) {
+			.concat( dom.controlsUp )
+			.concat( dom.controlsDown )
+			.concat( dom.controlsPrev )
+			.concat( dom.controlsNext ).forEach( function( node ) {
 			node.classList.remove( 'enabled' );
 			node.classList.remove( 'fragmented' );
 		} );
@@ -2904,11 +2904,11 @@
 				// Iframes
 				else if( backgroundIframe ) {
 					var iframe = document.createElement( 'iframe' );
-						iframe.setAttribute( 'src', backgroundIframe );
-						iframe.style.width  = '100%';
-						iframe.style.height = '100%';
-						iframe.style.maxHeight = '100%';
-						iframe.style.maxWidth = '100%';
+					iframe.setAttribute( 'src', backgroundIframe );
+					iframe.style.width  = '100%';
+					iframe.style.height = '100%';
+					iframe.style.maxHeight = '100%';
+					iframe.style.maxWidth = '100%';
 
 					background.appendChild( iframe );
 				}
@@ -2947,9 +2947,9 @@
 
 		var routes = {
 			left: indexh > 0 || config.loop,
-			right: indexh < horizontalSlides.length - 1 || config.loop,
+			right: indexh < horizontalSlides.length - 1 - noOfHiddenRight() || config.loop,
 			up: indexv > 0,
-			down: indexv < verticalSlides.length - 1
+			down: indexv < verticalSlides.length - 1 - noOfHiddenRight()
 		};
 
 		// reverse horizontal controls for rtl
@@ -3744,7 +3744,7 @@
 
 	}
 
-    function noOfHiddenLeft(){
+	function noOfHiddenLeft(){
 
 		function f($t,a){
 			var r = $t.prev("section[data-hidden-section]").length;
@@ -3756,23 +3756,33 @@
 		}
 		var presentSection = $("section.present");
 		return  f(presentSection,0)+1;
-    }
+	}
 
-    function noOfHiddenRight(){
-        return $("section.present").nextAll("[data-hidden-section]").length +1;
-    }
+	function noOfHiddenRight(){
+		function f($t,a){
+			var r = $t.next("section[data-hidden-section]").length;
+			r = r + $t.next("section[data-left-only-section]").length;
+			if ( r > 0 )
+				return f($t.next(),a + r);
+			else
+				return a;
+		}
+		var presentSection = $("section.present");
+		return  f(presentSection,0)+1;
+		//return $("section.present").nextAll("[data-hidden-section]").length +1;
+	}
 
 	function navigateLeft() {
 
 		// Reverse for RTL
 		if( config.rtl ) {
 			if( ( isOverview() || nextFragment() === false ) && availableRoutes().left ) {
-                slide( indexh + noOfHiddenLeft() );
+				slide( indexh + noOfHiddenLeft() );
 			}
 		}
 		// Normal navigation
 		else if( ( isOverview() || previousFragment() === false ) && availableRoutes().left ) {
-            slide( indexh - noOfHiddenLeft() );
+			slide( indexh - noOfHiddenLeft() );
 		}
 
 	}
@@ -3782,12 +3792,12 @@
 		// Reverse for RTL
 		if( config.rtl ) {
 			if( ( isOverview() || previousFragment() === false ) && availableRoutes().right ) {
-                slide( indexh - noOfHiddenRight() );
+				slide( indexh - noOfHiddenRight() );
 			}
 		}
 		// Normal navigation
 		else if( ( isOverview() || nextFragment() === false ) && availableRoutes().right ) {
-            slide( indexh + noOfHiddenRight() );
+			slide( indexh + noOfHiddenRight() );
 		}
 
 	}
@@ -4172,11 +4182,11 @@
 
 		touch.captured = false;
 
-        if (touch.needToPlay)
-            if (config.synchronousSlideChange)
-                config.synchronousSlideChange(touch.needToPlay);
+		if (touch.needToPlay)
+			if (config.synchronousSlideChange)
+				config.synchronousSlideChange(touch.needToPlay);
 
-        touch.needToPlay = false;
+		touch.needToPlay = false;
 
 
 	}
@@ -4296,8 +4306,8 @@
 	function onPageVisibilityChange( event ) {
 
 		var isHidden =  document.webkitHidden ||
-						document.msHidden ||
-						document.hidden;
+			document.msHidden ||
+			document.hidden;
 
 		// If, after clicking a link or similar and we're coming back,
 		// focus the document.body to ensure we can use keyboard shortcuts
