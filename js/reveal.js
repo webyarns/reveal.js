@@ -3768,8 +3768,7 @@
 				return a;
 		}
 		var presentSection = $("section.present");
-		return  f(presentSection,0)+1;
-		//return $("section.present").nextAll("[data-hidden-section]").length +1;
+		return  f(presentSection,0);
 	}
 
 	function navigateLeft() {
@@ -3777,29 +3776,33 @@
 		// Reverse for RTL
 		if( config.rtl ) {
 			if( ( isOverview() || nextFragment() === false ) && availableRoutes().left ) {
-				slide( indexh + noOfHiddenLeft() );
+				slide( indexh + noOfHiddenLeft()  + 1 );
 			}
 		}
 		// Normal navigation
 		else if( ( isOverview() || previousFragment() === false ) && availableRoutes().left ) {
-			slide( indexh - noOfHiddenLeft() );
+			slide( indexh - noOfHiddenLeft()  + 1);
 		}
 
 	}
 
 	function navigateRight() {
 
-		// Reverse for RTL
-		if( config.rtl ) {
-			if( ( isOverview() || previousFragment() === false ) && availableRoutes().right ) {
-				slide( indexh - noOfHiddenRight() );
+		var  nextSlideIdx= $("section.present").data("next-slide-idx");
+		if (nextSlideIdx){
+			slide( nextSlideIdx + 1);
+		} else {
+			// Reverse for RTL
+			if (config.rtl) {
+				if (( isOverview() || previousFragment() === false ) && availableRoutes().right) {
+					slide(indexh - noOfHiddenRight() + 1);
+				}
+			}
+			// Normal navigation
+			else if (( isOverview() || nextFragment() === false ) && availableRoutes().right) {
+				slide(indexh + noOfHiddenRight() + 1);
 			}
 		}
-		// Normal navigation
-		else if( ( isOverview() || nextFragment() === false ) && availableRoutes().right ) {
-			slide( indexh + noOfHiddenRight() );
-		}
-
 	}
 
 	function navigateUp() {
@@ -8477,7 +8480,7 @@
 				return a;
 		}
 		var presentSection = $("section.present");
-		return  f(presentSection,0)+1;
+		return  f(presentSection,0);
 	}
 
 	function noOfHiddenRight(){
@@ -8490,8 +8493,7 @@
 				return a;
 		}
 		var presentSection = $("section.present");
-		return  f(presentSection,0)+1;
-		//return $("section.present").nextAll("[data-hidden-section]").length +1;
+		return  f(presentSection,0);
 	}
 
 	function navigateLeft() {
@@ -8499,27 +8501,32 @@
 		// Reverse for RTL
 		if( config.rtl ) {
 			if( ( isOverview() || nextFragment() === false ) && availableRoutes().left ) {
-				slide( indexh + noOfHiddenLeft() );
+				slide( indexh + noOfHiddenLeft() + 1 );
 			}
 		}
 		// Normal navigation
 		else if( ( isOverview() || previousFragment() === false ) && availableRoutes().left ) {
-			slide( indexh - noOfHiddenLeft() );
+			slide( indexh - noOfHiddenLeft() + 1 );
 		}
 
 	}
 
 	function navigateRight() {
 
-		// Reverse for RTL
-		if( config.rtl ) {
-			if( ( isOverview() || previousFragment() === false ) && availableRoutes().right ) {
-				slide( indexh - noOfHiddenRight() );
+		var nextIdx = $("section.present").data("next-idx");
+		if (nextIdx){
+			slide(nextIdx - 1)
+		} else {
+			// Reverse for RTL
+			if( config.rtl ) {
+				if( ( isOverview() || previousFragment() === false ) && availableRoutes().right ) {
+					slide( indexh - noOfHiddenRight() + 1 );
+				}
 			}
-		}
-		// Normal navigation
-		else if( ( isOverview() || nextFragment() === false ) && availableRoutes().right ) {
-			slide( indexh + noOfHiddenRight() );
+			// Normal navigation
+			else if( ( isOverview() || nextFragment() === false ) && availableRoutes().right ) {
+				slide( indexh + noOfHiddenRight() + 1 );
+			}
 		}
 
 	}
