@@ -3776,12 +3776,12 @@
 		// Reverse for RTL
 		if( config.rtl ) {
 			if( ( isOverview() || nextFragment() === false ) && availableRoutes().left ) {
-				slide( indexh + noOfHiddenLeft()  + 1 );
+				slide( indexh + noOfHiddenLeft()  - 1 );
 			}
 		}
 		// Normal navigation
 		else if( ( isOverview() || previousFragment() === false ) && availableRoutes().left ) {
-			slide( indexh - noOfHiddenLeft()  + 1);
+			slide( indexh - noOfHiddenLeft()  - 1);
 		}
 
 	}
