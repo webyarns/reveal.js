@@ -6814,6 +6814,8 @@
 	 */
 	function slide( h, v, f, o ) {
 
+        if (currentSlide && currentSlide.dataset.preventNavigation)
+        	return;
 		// Remember where we were at before
 		previousSlide = currentSlide;
 
