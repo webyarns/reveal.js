@@ -4045,7 +4045,11 @@
 			else if( currentSlide ) {
 				window.location.hash = locationHash();
 			}
+		} else {
+			window.location.hash = '';
 		}
+
+
 
 	}
 	/**
