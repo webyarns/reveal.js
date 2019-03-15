@@ -301,7 +301,8 @@
 			startSpan: 0,
 			startCount: 0,
 			captured: false,
-			threshold: 40
+			threshold: 40,
+			needToPlay: false
 		},
 
 		// Holds information about the keyboard shortcuts
@@ -2647,6 +2648,15 @@
 		}
 
 		if( slideChanged ) {
+            touch.needToPlay = {
+                'indexh': indexh,
+                'indexv': indexv,
+                'previousSlide': previousSlide,
+                'currentSlide': currentSlide,
+                'origin': o
+            }; // rp:set flag
+
+
 			dispatchEvent( 'slidechanged', {
 				'indexh': indexh,
 				'indexv': indexv,
@@ -4976,6 +4986,13 @@
 	function onTouchEnd( event ) {
 
 		touch.captured = false;
+
+        if (touch.needToPlay)
+            if (config.synchronousSlideChange)
+                config.synchronousSlideChange(touch.needToPlay);
+
+        touch.needToPlay = false;
+
 
 	}
 
