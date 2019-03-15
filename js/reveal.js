@@ -8482,7 +8482,7 @@
 			var r = $t.prev("section[data-hidden-section]").length;
 			r = r + $t.prev("section[data-right-only-section]").length;
 			if (isTouchDevice)
-				r = r + $t.prev("section[t]").length;
+				r = r + $t.prev("section[data-non-touch-only-section]").length;
 			else
                 r = r + $t.prev("section[data-touch-only-section]").length;
 			if ( r > 0 )
