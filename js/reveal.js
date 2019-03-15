@@ -4525,11 +4525,21 @@
 	}
 
     function noOfHiddenLeft(){
-        return  $("section.present").prev("section[data-hidden-section]").length +1;
+
+		function f($t,a){
+			var r = $t.prev("section[data-hidden-section]").length;
+			r = r + $t.prev("section[data-right-only-section]").length;
+			if ( r > 0 )
+				return f($t.prev(),a + r);
+			else
+				return a;
+		}
+		var presentSection = $("section.present");
+		return  f(presentSection,0)+1;
     }
 
     function noOfHiddenRight(){
-        return $("section.present+section[data-hidden-section]").length +1;
+        return $("section.present").nextAll("[data-hidden-section]").length +1;
     }
 
 	function navigateLeft() {
