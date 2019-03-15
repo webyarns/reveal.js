@@ -2538,6 +2538,8 @@
 	 */
 	function slide( h, v, f, o ) {
 
+		if (currentSlide && currentSlide.dataset.preventNavigation)
+			return;
 		// Remember where we were at before
 		previousSlide = currentSlide;
 
@@ -3590,7 +3592,7 @@
 
 		var routes = {
 			left: indexh > 0,
-			right: indexh < horizontalSlides.length - 1,
+			right: indexh < horizontalSlides.length - 1 - noOfHiddenRight() || config.loop,
 			up: indexv > 0,
 			down: indexv < verticalSlides.length - 1
 		};
@@ -4529,6 +4531,10 @@
 		function f($t,a){
 			var r = $t.prev("section[data-hidden-section]").length;
 			r = r + $t.prev("section[data-right-only-section]").length;
+			if (isTouchDevice)
+				r = r + $t.prev("section[data-non-touch-only-section]").length;
+			else
+				r = r + $t.prev("section[data-touch-only-section]").length;
 			if ( r > 0 )
 				return f($t.prev(),a + r);
 			else
@@ -4539,7 +4545,20 @@
     }
 
     function noOfHiddenRight(){
-        return $("section.present").nextAll("[data-hidden-section]").length +1;
+		function f($t,a){
+			var r = $t.next("section[data-hidden-section]").length;
+			r = r + $t.next("section[data-left-only-section]").length;
+			if (isTouchDevice)
+				r = r + $t.next("section[data-non-touch-only-section]").length;
+			else
+				r = r + $t.next("section[data-touch-only-section]").length;
+			if ( r > 0 )
+				return f($t.next(),a + r);
+			else
+				return a;
+		}
+		var presentSection = $("section.present");
+		return  f(presentSection,0);
     }
 
 	function navigateLeft() {
@@ -4547,12 +4566,12 @@
 		// Reverse for RTL
 		if( config.rtl ) {
 			if( ( isOverview() || nextFragment() === false ) && availableRoutes().left ) {
-                slide( indexh + noOfHiddenLeft() );
+                slide( indexh + noOfHiddenLeft() - 1);
 			}
 		}
 		// Normal navigation
 		else if( ( isOverview() || previousFragment() === false ) && availableRoutes().left ) {
-            slide( indexh - noOfHiddenLeft() );
+            slide( indexh - noOfHiddenLeft() - 1);
 		}
 
 	}
@@ -4560,16 +4579,20 @@
 	function navigateRight() {
 
 		hasNavigatedRight = true;
-
-		// Reverse for RTL
-		if( config.rtl ) {
-			if( ( isOverview() || previousFragment() === false ) && availableRoutes().right ) {
-                slide( indexh - noOfHiddenRight() );
+		var  nextSlideIdx= $("section.present").data("next-slide-idx");
+		if (nextSlideIdx){
+			slide( nextSlideIdx + 1);
+		} else {
+			// Reverse for RTL
+			if (config.rtl) {
+				if ((isOverview() || previousFragment() === false) && availableRoutes().right) {
+					slide(indexh - noOfHiddenRight() + 1);
+				}
 			}
-		}
-		// Normal navigation
-		else if( ( isOverview() || nextFragment() === false ) && availableRoutes().right ) {
-            slide( indexh + noOfHiddenRight() );
+			// Normal navigation
+			else if ((isOverview() || nextFragment() === false) && availableRoutes().right) {
+				slide(indexh + noOfHiddenRight() + 1);
+			}
 		}
 
 	}
