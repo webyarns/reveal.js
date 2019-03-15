@@ -3286,7 +3286,11 @@
 
 				window.location.hash = url;
 			}
+		} else {
+			// webyarns addition
+			window.location.hash = '';
 		}
+
 
 	}
 
