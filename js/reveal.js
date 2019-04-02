@@ -3289,7 +3289,8 @@
 			}
 		} else {
 			// webyarns addition
-			window.location.hash = '';
+			history.pushState("", document.title, window.location.pathname
+				+ window.location.search);
 		}
 
 	}
