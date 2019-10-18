@@ -29,7 +29,7 @@
 				    <h1>Start</h1>
 				</section>
 				<section>
-				    <h1>Slide 2</h1>
+				    <h1>Slide 2 (<code>hindex=1)</code></h1>
 				</section>
 				<section>
 				    <h1>Next Slide is hidden</h1>
@@ -50,6 +50,9 @@
 				    <h2>This one has a <code>data-next-slide-idx=1</code></h2>
 				</section>
 				<section>
+				    <h2>Link to <a data-link-indexh="1"><code>data-link-indexh="1"</code></a></h2>
+				</section>
+				<section>
 				    <h1>End</h1>
 				</section>
 			</div>
@@ -64,6 +67,7 @@
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
 				dependencies: [
+					{ src: 'webyarns/lib/webyarn-plugin.js' },
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
