@@ -1,62 +1,58 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-		<title>reveal.js</title>
-
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
-
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
-
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-				    <h1>Start</h1>
-				</section>
-				<section>
-				    <h1>Slide 2 (<code>hindex=1)</code></h1>
-				</section>
-				<section>
-				    <h1>Next Slide is hidden</h1>
-				</section>
-				<section data-hidden-section>
-					<code>[data-hidden-section]</code>
-				</section>
-				<section>
-				    <h1>Next slide is right only</h1>
-				</section>
-				<section data-right-only-section>
-				   <code>data-right-only-section</code>
-				</section>
-				<section>
-				    <h1>Previous was right only</h1>
-				</section>
-				<section data-next-slide-idx="1">
-				    <h2>This one has a <code>data-next-slide-idx=1</code></h2>
-				</section>
-				<section>
-				    <h2>Link to <a data-link-indexh="1"><code>data-link-indexh="1"</code></a></h2>
-				</section>
-				<section>
-				    <h1>End</h1>
-				</section>
-			</div>
-		</div>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>reveal.js</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+<body>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h1>Start</h1>
+		</section>
+		<section>
+			<h1>Slide 2 (<code>hindex=1)</code></h1>
+		</section>
+		<section>
+			<h1>Next Slide is hidden</h1>
+		</section>
+		<section data-hidden-section>
+			<code>[data-hidden-section]</code>
+		</section>
+		<section>
+			<h1>Next slide is right only</h1>
+		</section>
+		<section data-right-only-section>
+			<code>data-right-only-section</code>
+		</section>
+		<section>
+			<h1>Previous was right only</h1>
+		</section>
+		<section data-next-slide-idx="1">
+			<h2>This one has a <code>data-next-slide-idx=1</code></h2>
+		</section>
+		<section>
+			<h2>Link to <a data-link-indexh="1"><code>data-link-indexh="1"</code></a></h2>
+		</section>
+		<section>
+			<h1>End</h1>
+		</section>
+	</div>
+</div>
 
 		<script src="webyarns/lib/helpers.js"></script>
 		<script src="js/reveal.js"></script>

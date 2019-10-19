@@ -52,5 +52,10 @@
     "socket.io": "^2.2.0",
     "typescript": "^3.6.4"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+    "@types/howler": "^2.1.1",
+    "howler": "^2.1.2"
+  }
 }
