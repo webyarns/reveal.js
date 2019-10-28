@@ -7,7 +7,6 @@
         document.addEventListener("DOMContentLoaded", factory)
     }
 }(() => {
-    console.log("start");
     type AudioId = string
     const audioId = (s: AudioId): AudioId => s.startsWith("!") ? s.substring(1) : s;
 
@@ -15,7 +14,10 @@
         es.reduce(([p, f], e) => (fn(e) ? [[...p, e], f] : [p, [...f, e]]), [[], []]);
 
     interface SoundData {
-        [id: string]: string[]
+        [id: string]: {
+            loop?: boolean,
+            src: string[]
+        }
     }
 
     interface AudioMap {
@@ -35,8 +37,8 @@
     const data: SoundData = loadData()
     const audioMap: AudioMap = Object.keys(data).reduce((acc, id) => {
         const howl = new Howl({
-            src: data[id],
-            loop: true,
+            src: data[id].src,
+            loop: Boolean(data[id].loop),
         });
         howl.on("mute", () => howl.stop());
         return Object.assign(acc, {
@@ -77,14 +79,13 @@
         const currentSounds = soundData(currentSoundData);
 
         const [toStop, toStart] = nextAudioActions(currentSounds, nextSounds);
-        console.log([toStop, toStart]);
+        
 
         toStop.map(id => {
             audioMap[id].fade(1, 0, fadeValue('fade-out-speed'));
         })
         toStart.map(id => {
             audioMap[id].play()
-            console.log("starting ", id);
             audioMap[id].fade(0, 1, fadeValue("fade-in-speed"))
         })
 

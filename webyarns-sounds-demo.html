@@ -21,70 +21,63 @@
 <body>
 <div class="reveal">
     <div class="slides">
-
-		<section>
-			<h1>Start</h1>
-			<a id="test">Test if sound plays at all</a>
-		</section>
-		<section data-sounds="nakedcall">
-			<h1>start nakedcall</h1>
-
-			<h2>nakedcall</h2>
-
-
-			<h1>stop bar</h1>
-		</section>
-		<section data-sounds="nakedcall, !bar">
-			<h1>restart bar</h1>
-
-			<h2>nakedcall,!bar</h2>
-
-
-
-			<h1>stop ding, start nakedcall</h1>
-		</section>
-		<section data-sounds="nakedcall, !bar">
-			<h1>restart bar (again)</h1>
-
-			<h2>nakedcall,!bar</h2>
-
-		</section>
-		<section data-sounds="bar, ding" data-fade-out-speed="0">
-			<h1>stop nakedcall and start ding</h1>
-
-			<h2>bar,ding</h2>
-		</section>
-
-
-
-	</div>
+        <section>
+            <h1>Start</h1>
+            <a id="test">Test if sound plays at all</a>
+        </section>
+        <section data-sounds="nakedcall">
+            <h1>start nakedcall</h1>
+            <h2>nakedcall</h2>
+            <h1>stop bar</h1>
+        </section>
+        <section data-sounds="nakedcall, !bar">
+            <h1>restart bar</h1>
+            <h2>nakedcall,!bar</h2>
+            <h1>stop ding, start nakedcall</h1>
+        </section>
+        <section data-sounds="nakedcall, !bar">
+            <h1>restart bar (again)</h1>
+            <h2>nakedcall,!bar</h2>
+        </section>
+        <section data-sounds="bar, ding" data-fade-out-speed="0">
+            <h1>stop nakedcall and start ding</h1>
+            <h2>bar,ding</h2>
+        </section>
+    </div>
 </div>
 <script id="sounds" type="application/json">
     {
-        "nakedcall": [
-            "webyarns/sounds/nakedcall.mp3",
-            "webyarns/sounds/nakedcall.ogg"
-        ],
-        "manstitutes": [
-            "webyarns/sounds/manstitutes.mp3",
-            "webyarns/sounds/manstitutes.ogg"
-        ],
-        "bar": [
-            "webyarns/sounds/bar.mp3",
-            "webyarns/sounds/bar.ogg"
-        ],
-        "ding": [
-            "webyarns/sounds/ding.mp3",
-            "webyarns/sounds/ding.ogg"
-        ]
+    "nakedcall": {
+    "loop": true,
+    "src": [
+    "webyarns/sounds/nakedcall.mp3",
+    "webyarns/sounds/nakedcall.ogg"
+    ]
+    },
+    "manstitutes": {
+    "src": [
+    "webyarns/sounds/manstitutes.mp3",
+    "webyarns/sounds/manstitutes.ogg"
+    ]
+    },
+    "bar": {
+    "src": [
+    "webyarns/sounds/bar.mp3",
+    "webyarns/sounds/bar.ogg"
+    ]
+    },
+    "ding": {
+    "src": [
+    "webyarns/sounds/ding.mp3",
+    "webyarns/sounds/ding.ogg"
+    ]
+    }
     }
 </script>
-
 <script src="webyarns/lib/helpers.js"></script>
 <script src="js/reveal.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.core.min.js"></script>
 <script src="webyarns/lib/webyarn-sound.js"></script>
-
 <script>
     // More info about config & dependencies:
     // - https://github.com/hakimel/reveal.js#configuration
