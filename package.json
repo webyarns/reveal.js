@@ -9,8 +9,11 @@
     "test": "grunt test",
     "start": "grunt serve",
     "build": "grunt",
-    "build-webyarns": "babel  --extensions '.ts' webyarns/src -d webyarns/lib",
-    "watch-webyarns": "babel --extensions '.ts'  webyarns/src -d webyarns/lib --watch --source-maps inline",
+    "webyarns:build:babel": "babel  --extensions '.ts' webyarns/src -d webyarns/lib",
+    "webyarns:build:minify1": "uglifyjs webyarns/lib/webyarn-plugin.js --compress --mangle -o webyarns/lib/webyarn-plugin.min.js",
+    "webyarns:build:minify2": "uglifyjs webyarns/lib/webyarns-sound.js --compress --mangle -o webyarns/lib/webyarns-sound.min.js",
+    "webyarns:build": "npm-run-all --parallel webyarns:build:*",
+    "webyarns:watch": "babel --extensions '.ts'  webyarns/src -d webyarns/lib --watch --source-maps inline",
     "test-webyarns": "jest",
     "tsc-webyarns": "tsc"
   },
@@ -49,8 +52,10 @@
     "load-grunt-tasks": "^4.0.0",
     "mustache": "^2.3.0",
     "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
     "socket.io": "^2.2.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.6.4",
+    "uglify-js": "^3.6.5"
   },
   "license": "MIT",
   "dependencies": {

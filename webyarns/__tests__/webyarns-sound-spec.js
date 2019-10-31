@@ -1,4 +1,4 @@
-import SoundPlugin from "../src/webyarn-sound"
+import SoundPlugin from "../src/webyarns-sound"
 
 describe("determining sound actions", () => {
 
