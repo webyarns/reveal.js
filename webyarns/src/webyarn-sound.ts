@@ -40,7 +40,11 @@
             src: data[id].src,
             loop: Boolean(data[id].loop),
         });
-        howl.on("mute", () => howl.stop());
+        howl.on("fade", (n) => {
+            if (howl.volume() === 0) {
+                howl.stop(n);
+            }
+        });
         return Object.assign(acc, {
             [id]: howl
         });
