@@ -1,3 +1,4 @@
+npm run webyarns:build
 rsync  -auvHzP \
    --exclude='node_modules' \
    --exclude='test' \

@@ -83,12 +83,13 @@
         const currentSounds = soundData(currentSoundData);
 
         const [toStop, toStart] = nextAudioActions(currentSounds, nextSounds);
-        
+
 
         toStop.map(id => {
             audioMap[id].fade(1, 0, fadeValue('fade-out-speed'));
         })
         toStart.map(id => {
+            audioMap[id].stop()
             audioMap[id].play()
             audioMap[id].fade(0, 1, fadeValue("fade-in-speed"))
         })

@@ -115,6 +115,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       audioMap[id].fade(1, 0, fadeValue('fade-out-speed'));
     });
     toStart.map(function (id) {
+      audioMap[id].stop();
       audioMap[id].play();
       audioMap[id].fade(0, 1, fadeValue("fade-in-speed"));
     });
