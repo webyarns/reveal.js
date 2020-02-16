@@ -31,6 +31,16 @@
     });
   }
 
+  function isIndex(value) {
+    return /^\d+$/.test(value);
+  }
+
+  function lookupIndex(id) {
+    var slides = document.querySelector(".slides");
+    var f = document.getElementById(id);
+    return slides && f ? Array.from(slides.children).indexOf(f) : -1;
+  }
+
   function addSupportForTimedSections() {
     Reveal.addEventListener('slidechanged', function (event) {
       var curAutoMove = event.currentSlide.getAttribute("data-auto-move-to");
@@ -38,8 +48,24 @@
       if (curAutoMove) {
         var timeout = event.currentSlide.getAttribute("data-auto-move-time-sec") * 1000 | 3000;
         var timer = setTimeout(function () {
-          var slide = parseInt(curAutoMove, 10) - 1;
-          Reveal.slide(slide);
+          if (curAutoMove === "next") {
+            Reveal.next();
+          } else if (curAutoMove === "prev") {
+            Reveal.prev();
+          } else if (curAutoMove.charAt(0) === "#") {
+            document.location.hash = curAutoMove;
+          } else if (isIndex(curAutoMove)) {
+            var slide = parseInt(curAutoMove, 10) - 1;
+            Reveal.slide(slide);
+          } else {
+            var i = lookupIndex(curAutoMove);
+
+            if (i === -1) {
+              console.error("get not find slide with id", curAutoMove);
+            }
+
+            Reveal.slide(i);
+          }
         }, timeout);
         Reveal.addEventListener('slidechanged', function () {
           return clearTimeout(timer);
