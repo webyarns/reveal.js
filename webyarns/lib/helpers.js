@@ -91,6 +91,12 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       throw Error("data-next-slide-indexh, must be a number, got ".concat(s));
     }
   };
+
+  var lookupIndex = function lookupIndex(id) {
+    var slides = document.querySelector(".slides");
+    var f = document.getElementById(id);
+    return slides && f ? Array.from(slides.children).indexOf(f) : -1;
+  };
   /******
    * Exports
    ******/
@@ -99,7 +105,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   var Webyarns = {
     noOfHiddenLeft: noOfHiddenLeft,
     noOfHiddenRight: noOfHiddenRight,
-    getNextSlideIndexH: getNextSlideIndexH
+    getNextSlideIndexH: getNextSlideIndexH,
+    lookupIndex: lookupIndex
   };
 
   if (exposeAllForTests) {

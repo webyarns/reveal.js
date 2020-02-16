@@ -34,12 +34,6 @@
         return /^\d+$/.test(value);
     }
 
-    function lookupIndex(id: string): number {
-        const slides = document.querySelector(".slides");
-        const f = document.getElementById(id);
-        return (slides && f) ?  Array.from(slides.children).indexOf(f) : -1;
-    }
-
     /**
      * Automatically moves to a section after a timeout
      * Possible values for data-auto-move-to:
@@ -64,7 +58,7 @@
                         const slide = parseInt(curAutoMove, 10) - 1;
                         Reveal.slide(slide);
                     } else {
-                        const i = lookupIndex(curAutoMove)
+                        const i = Webyarns.lookupIndex(curAutoMove)
                         if (i === -1){
                             console.error("get not find slide with id",curAutoMove)
                         }

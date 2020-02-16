@@ -60,6 +60,13 @@
     };
 
 
+    const lookupIndex = (id: string): number => {
+        const slides = document.querySelector(".slides");
+        const f = document.getElementById(id);
+        return (slides && f) ?  Array.from(slides.children).indexOf(f) : -1;
+    };
+
+
     /******
      * Exports
      ******/
@@ -67,6 +74,7 @@
         noOfHiddenLeft,
         noOfHiddenRight,
         getNextSlideIndexH,
+        lookupIndex,
     };
 
 

@@ -34,12 +34,15 @@
   function isIndex(value) {
     return /^\d+$/.test(value);
   }
+  /**
+   * Automatically moves to a section after a timeout
+   * Possible values for data-auto-move-to:
+   *  - 'next' and 'prev'
+   *  - a url hash value ('#/some-id')
+   *  - id of a section ('some-id')
+   *  - an position (one-based) of a section ('12')
+   */
 
-  function lookupIndex(id) {
-    var slides = document.querySelector(".slides");
-    var f = document.getElementById(id);
-    return slides && f ? Array.from(slides.children).indexOf(f) : -1;
-  }
 
   function addSupportForTimedSections() {
     Reveal.addEventListener('slidechanged', function (event) {
@@ -58,7 +61,7 @@
             var slide = parseInt(curAutoMove, 10) - 1;
             Reveal.slide(slide);
           } else {
-            var i = lookupIndex(curAutoMove);
+            var i = Webyarns.lookupIndex(curAutoMove);
 
             if (i === -1) {
               console.error("get not find slide with id", curAutoMove);
