@@ -5105,6 +5105,7 @@
 				}
 
 				if( previousSlide ) {
+					// TODO fux this for hidden sections
 					var v = ( previousSlide.querySelectorAll( 'section' ).length - 1 ) || undefined;
 					var h = indexh - 1;
 					slide( h, v );
@@ -5271,6 +5272,8 @@
 		// the presentation is one-dimensional
 		var useLinearMode = config.navigationMode === 'linear' || !hasHorizontalSlides() || !hasVerticalSlides();
 
+		//webyarn temporary fix
+		useLinearMode=false
 		var triggered = false;
 
 		// 1. User defined key bindings
@@ -5511,21 +5514,11 @@
 				}
 				else if( deltaY > touch.threshold ) {
 					touch.captured = true;
-					if( config.navigationMode === 'linear' ) {
-						navigatePrev();
-					}
-					else {
-						navigateUp();
-					}
+					navigateUp();
 				}
 				else if( deltaY < -touch.threshold ) {
 					touch.captured = true;
-					if( config.navigationMode === 'linear' ) {
-						navigateNext();
-					}
-					else {
-						navigateDown();
-					}
+					navigateDown();
 				}
 
 				// If we're embedded, only block touch events if they have
