@@ -12,7 +12,8 @@
     "webyarns:build:babel": "babel  --extensions '.ts' webyarns/src -d webyarns/lib",
     "webyarns:build:minify1": "uglifyjs webyarns/lib/webyarn-plugin.js --compress --mangle -o webyarns/lib/webyarn-plugin.min.js",
     "webyarns:build:minify2": "uglifyjs webyarns/lib/webyarns-sound.js --compress --mangle -o webyarns/lib/webyarns-sound.min.js",
-    "webyarns:build": "npm-run-all --parallel webyarns:build:*",
+    "webyarns:build:minify3": "uglifyjs webyarns/lib/audio-ios-initialiser.js --compress --mangle -o webyarns/lib/audio-ios-initialiser.min.js",
+    "webyarns:build": "npm-run-all webyarns:build:*",
     "webyarns:watch": "babel --extensions '.ts'  webyarns/src -d webyarns/lib --watch --source-maps inline",
     "test-webyarns": "jest",
     "tsc-webyarns": "tsc"

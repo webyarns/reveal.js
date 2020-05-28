@@ -112,12 +112,14 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         toStart = _nextAudioActions2[1];
 
     toStop.map(function (id) {
-      audioMap[id].fade(1, 0, fadeValue('fade-out-speed'));
+      if (!audioMap[id]) console.error("no invalid audioMap for " + id);else audioMap[id].fade(1, 0, fadeValue('fade-out-speed'));
     });
     toStart.map(function (id) {
-      audioMap[id].stop();
-      audioMap[id].play();
-      audioMap[id].fade(0, 1, fadeValue("fade-in-speed"));
+      if (!audioMap[id]) console.error("no invalid audioMap for " + id);else {
+        audioMap[id].stop();
+        audioMap[id].play();
+        audioMap[id].fade(0, 1, fadeValue("fade-in-speed"));
+      }
     });
   };
 
