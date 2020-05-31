@@ -9,12 +9,10 @@
     "test": "grunt test",
     "start": "grunt serve",
     "build": "grunt",
-    "webyarns:build:babel": "babel  --extensions '.ts' webyarns-util/src -d webyarns-util/lib",
-    "webyarns:build:minify1": "uglifyjs webyarns-util/lib/webyarn-plugin.js --compress --mangle -o webyarns-util/lib/webyarn-plugin.min.js",
-    "webyarns:build:minify2": "uglifyjs webyarns-util/lib/webyarns-sound.js --compress --mangle -o webyarns-util/lib/webyarns-sound.min.js",
-    "webyarns:build:minify3": "uglifyjs webyarns-util/lib/audio-ios-initialiser.js --compress --mangle -o webyarns-util/lib/audio-ios-initialiser.min.js",
+    "webyarns:build:babel": "babel  --extensions '.ts,.js' webyarns-util/src -d webyarns-util/lib",
+    "webyarns:build:all": "uglifyjs-folder webyarns-util/lib  -e -o webyarns-util/lib/ --pattern \"*.js,!*.min.js\"  ",
     "webyarns:build": "npm-run-all webyarns:build:*",
-    "webyarns:watch": "babel --extensions '.ts'  webyarns-util/src -d webyarns-util/lib --watch --source-maps inline",
+    "webyarns:watch": "babel --extensions '.ts,.js'  webyarns-util/src -d webyarns-util/lib --watch --source-maps inline",
     "test-webyarns": "jest",
     "tsc-webyarns": "tsc"
   },
@@ -62,6 +60,7 @@
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.6.0",
     "@types/howler": "^2.1.1",
-    "howler": "^2.1.2"
+    "howler": "^2.1.2",
+    "uglifyjs-folder": "^1.5.4"
   }
 }
