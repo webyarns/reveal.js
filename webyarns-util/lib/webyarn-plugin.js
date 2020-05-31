@@ -6,8 +6,11 @@
     init: function init() {
       var style = document.createElement('style');
       document.head.appendChild(style);
+      Reveal.addEventListener('slidechanged', function (event) {
+        addSupportForTimedSections(event);
+        addSupportForOneTimeSections(event);
+      });
       addSupportForAnchorWithDataLink(style.sheet);
-      addSupportForTimedSections();
     }
   };
   /**
@@ -35,46 +38,64 @@
     return /^\d+$/.test(value);
   }
   /**
+   *
+   * Syntax
+   * <section data-auto-move-to="..." data-auto-move-time-sec="..>
+   *
    * Automatically moves to a section after a timeout
    * Possible values for data-auto-move-to:
    *  - 'next' and 'prev'
    *  - a url hash value ('#/some-id')
    *  - id of a section ('some-id')
    *  - an position (one-based) of a section ('12')
+   *
+   *  data-auto-move-time-sec is optional. Defaults to 1 second
    */
 
 
-  function addSupportForTimedSections() {
-    Reveal.addEventListener('slidechanged', function (event) {
-      var curAutoMove = event.currentSlide.getAttribute("data-auto-move-to");
+  function addSupportForTimedSections(event) {
+    var curAutoMove = event.currentSlide.getAttribute("data-auto-move-to");
 
-      if (curAutoMove) {
-        var timeout = event.currentSlide.getAttribute("data-auto-move-time-sec") * 1000 | 3000;
-        var timer = setTimeout(function () {
-          if (curAutoMove === "next") {
-            Reveal.next();
-          } else if (curAutoMove === "prev") {
-            Reveal.prev();
-          } else if (curAutoMove.charAt(0) === "#") {
-            document.location.hash = curAutoMove;
-          } else if (isIndex(curAutoMove)) {
-            var slide = parseInt(curAutoMove, 10) - 1;
-            Reveal.slide(slide);
-          } else {
-            var i = Webyarns.lookupIndex(curAutoMove);
+    if (curAutoMove) {
+      var providedValue = event.currentSlide.getAttribute("data-auto-move-time-sec");
+      var timeout = providedValue ? Number.parseInt(providedValue, 10) * 1000 : 1;
+      var timer = setTimeout(function () {
+        if (curAutoMove === "next") {
+          Reveal.next();
+        } else if (curAutoMove === "prev") {
+          Reveal.prev();
+        } else if (curAutoMove.charAt(0) === "#") {
+          document.location.hash = curAutoMove;
+        } else if (isIndex(curAutoMove)) {
+          var slide = parseInt(curAutoMove, 10) - 1;
+          Reveal.slide(slide);
+        } else {
+          var i = Webyarns.lookupIndex(curAutoMove);
 
-            if (i === -1) {
-              console.error("get not find slide with id", curAutoMove);
-            }
-
-            Reveal.slide(i);
+          if (i === -1) {
+            console.error("get not find slide with id", curAutoMove);
           }
-        }, timeout);
-        Reveal.addEventListener('slidechanged', function () {
-          return clearTimeout(timer);
-        });
-      }
-    });
+
+          Reveal.slide(i);
+        }
+      }, timeout);
+      Reveal.addEventListener('slidechanged', function () {
+        return clearTimeout(timer);
+      });
+    }
+  }
+  /**
+   * syntax <section one-time>
+   *
+   * Section is shown only one time
+   */
+
+
+  function addSupportForOneTimeSections(event) {
+    var prevSlide = event.previousSlide;
+    if (!prevSlide) return;
+    var onetime = prevSlide.getAttribute("data-one-time");
+    if (onetime) prevSlide.setAttribute("data-hidden-section", "true");
   }
 
   Reveal.registerPlugin('WebyarnPlugin', plugin);

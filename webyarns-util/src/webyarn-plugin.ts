@@ -5,8 +5,13 @@
         init: () => {
             const style = document.createElement('style');
             document.head.appendChild(style);
+            Reveal.addEventListener('slidechanged', event => {
+                addSupportForTimedSections(event)
+                addSupportForOneTimeSections(event)
+            });
             addSupportForAnchorWithDataLink(style.sheet as CSSStyleSheet);
-            addSupportForTimedSections()
+
+
         }
     };
 
@@ -35,18 +40,25 @@
     }
 
     /**
+     *
+     * Syntax
+     * <section data-auto-move-to="..." data-auto-move-time-sec="..>
+     *
      * Automatically moves to a section after a timeout
      * Possible values for data-auto-move-to:
      *  - 'next' and 'prev'
      *  - a url hash value ('#/some-id')
      *  - id of a section ('some-id')
      *  - an position (one-based) of a section ('12')
+     *
+     *  data-auto-move-time-sec is optional. Defaults to 1 second
      */
-    function addSupportForTimedSections() {
-        Reveal.addEventListener('slidechanged', function (event) {
+    function addSupportForTimedSections(event: SlideEvent) {
+
             const curAutoMove = event.currentSlide.getAttribute("data-auto-move-to");
             if (curAutoMove) {
-                const timeout = event.currentSlide.getAttribute("data-auto-move-time-sec") * 1000 | 3000;
+                const providedValue = event.currentSlide.getAttribute("data-auto-move-time-sec");
+                const timeout = providedValue? Number.parseInt(providedValue,10) * 1000 : 1;
                 const timer = setTimeout(function () {
                     if (curAutoMove === "next") {
                         Reveal.next()
@@ -59,16 +71,31 @@
                         Reveal.slide(slide);
                     } else {
                         const i = Webyarns.lookupIndex(curAutoMove)
-                        if (i === -1){
-                            console.error("get not find slide with id",curAutoMove)
+                        if (i === -1) {
+                            console.error("get not find slide with id", curAutoMove)
                         }
                         Reveal.slide(i)
                     }
                 }, timeout);
                 Reveal.addEventListener('slidechanged', () => clearTimeout(timer))
             }
-        })
     }
+
+    /**
+     * syntax <section one-time>
+     *
+     * Section is shown only one time
+     */
+    function addSupportForOneTimeSections(event: SlideEvent) {
+        let prevSlide = event.previousSlide;
+        if (!prevSlide)
+            return
+        const onetime = prevSlide.getAttribute("data-one-time");
+        if (onetime)
+            prevSlide.setAttribute("data-hidden-section", "true")
+
+    }
+
 
     Reveal.registerPlugin('WebyarnPlugin', plugin);
 })()
