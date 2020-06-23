@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>reveal.js</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<style>
+		#scrollTitles {
+			position: absolute;
+			overflow: auto;
+			overflow-y: hidden; /* Hide vertical scrollbar */
+			width: 70%;
+			height: 35%;
+			top: 30%;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			padding: 0px;
+			z-index: 1;
+			margin-left: auto;
+			margin-right: auto;
+
+		}
+	</style>
+</head>
+<body>
+
+
+<div class="reveal">
+	<div class="slides">
+		<section>
+		    <h1>Start</h1>
+		</section>
+		<section id="credits">
+			<div id="scrollTitles">
+				<br><br><br><br><br><br>
+				<h1234>
+					SPUN BY:
+					ALAN BIGELOW <a href='http://www.webyarns.com/' target="_blank">
+					@ WEBYARNS.COM</a>
+					<br>
+					DISCLAIMER: Certain logos, other graphics, and editorial content were captured via screenshot by the
+					creator of this fictional story, but those logos and other content are owned by their trademark and
+					copyright owners. The use of those logos, other graphics, and editorial content is not authorized
+					by, sponsored by, or associated with the trademark or copyright owners. This is a non-profit work of
+					fiction and often used as an instructional tool in educational settings. Names, characters,
+					businesses, places, events, and incidents are either the products of the author's imagination or
+					used in a fictitious manner. Any resemblance to actual persons, living or dead, or actual events, is
+					purely coincidental. Many thanks to the trademark and copyright owners! If your name should be here,
+					please contact me.
+					<br><br>
+					This work uses images and audio files acquired online and modified by the artist.
+					<br><br>
+					Many thanks to...
+					<br><br>
+					Pre-edit video/animations/images:
+					<br><br>
+					Copyright © 2009 Jupiter Images Corporation<br>
+					Copyright © 2009 ClipArt.com
+					<br>
+					Copyright © 2009 Plesk: Comic Life<br>
+					Copyright © 2009 Guto Araki
+					<br><br>
+					Other:
+					<br><br>
+					Wynne CDL (2008). Rosalia Abreu and the Apes of Havana. International Journal of Primatology (DOI
+					10.1007/s10764-008-9242-0) <br>
+					Brian Kross, Chief Detector Engineer<a href='http://education.jlab.org/qa/mathatom_04.html'
+														   target="_blank"> (Thomas Jefferson National Accelerator
+					Facility - Office of Science Education)</a>
+					<br><br>
+					Pre-mix sound files:
+					<br><br>
+					Copyright © Soundrangers.com <br>
+					Copyright © Sounddogs.com
+					<br><br>
+					CODING ASSISTANCE:<a href='http://www.edc4it.com/' target="_blank">
+					Raphaël Parrée of edc4it
+				</a>
+					<br><br>
+					Also with many thanks to:
+					<a href='http://lab.hakim.se/reveal-js/#/' target="_blank">
+						Hakim El Hattab & reveal.js
+					</a>|
+					<br><br>
+					<a href="http://www.webyarns.com/" target="_blank">
+						FOR MORE STORIES GO TO WEBYARNS.COM
+					</a>
+				</h1234>
+				<br><br><br><br><br><br>
+				<br><br><br><br><br><br>
+			</div>
+		</section>
+	</div>
+</div>
+
+		<script src="webyarns-util/lib/helpers.js"></script>
+		<script src="js/reveal.js"></script>
+<script src="webyarns-util/lib/credits.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'webyarns/lib/webyarn-plugin.js' },
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
