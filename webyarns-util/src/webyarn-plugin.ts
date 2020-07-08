@@ -58,7 +58,7 @@
             const curAutoMove = event.currentSlide.getAttribute("data-auto-move-to");
             if (curAutoMove) {
                 const providedValue = event.currentSlide.getAttribute("data-auto-move-time-sec");
-                const timeout = providedValue? Number.parseInt(providedValue,10) * 1000 : 1;
+                const timeout = providedValue? Number.parseFloat(providedValue) * 1000 : 1;
                 const timer = setTimeout(function () {
                     if (curAutoMove === "next") {
                         Reveal.next()
