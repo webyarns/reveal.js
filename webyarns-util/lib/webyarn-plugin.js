@@ -54,11 +54,13 @@
 
 
   function addSupportForTimedSections(event) {
+    var rx = /random\(([0-9,\s]+)\)/;
     var curAutoMove = event.currentSlide.getAttribute("data-auto-move-to");
 
     if (curAutoMove) {
       var providedValue = event.currentSlide.getAttribute("data-auto-move-time-sec");
-      var timeout = providedValue ? Number.parseInt(providedValue, 10) * 1000 : 1;
+      var timeout = providedValue ? Number.parseFloat(providedValue) * 1000 : 1;
+      var match = curAutoMove.match(rx);
       var timer = setTimeout(function () {
         if (curAutoMove === "next") {
           Reveal.next();
@@ -66,6 +68,14 @@
           Reveal.prev();
         } else if (curAutoMove.charAt(0) === "#") {
           document.location.hash = curAutoMove;
+        } else if (match) {
+          var values = match[1].split(",").map(function (e) {
+            return e.trim();
+          }).map(function (i) {
+            return Number.parseInt(i, 10);
+          });
+          var random = values[Math.floor(Math.random() * values.length)];
+          Reveal.slide(random);
         } else if (isIndex(curAutoMove)) {
           var slide = parseInt(curAutoMove, 10) - 1;
           Reveal.slide(slide);
