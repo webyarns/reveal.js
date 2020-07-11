@@ -10,10 +10,21 @@
                 addSupportForOneTimeSections(event)
             });
             addSupportForAnchorWithDataLink(style.sheet as CSSStyleSheet);
+            addSupportForProceedToNextAfterVideoPlayed()
 
 
         }
     };
+
+    /**
+     * Automatic proceed to next slide  once a video has completed
+     */
+
+    function addSupportForProceedToNextAfterVideoPlayed(){
+        document.querySelectorAll<HTMLVideoElement>("video[data-auto-next]").forEach(v=>{
+           v.addEventListener('ended',_=>Reveal.next())
+        })
+    }
 
     /**
      * allows for
@@ -103,5 +114,7 @@
     }
 
 
+
+    // @ts-ignore
     Reveal.registerPlugin('WebyarnPlugin', plugin);
 })()

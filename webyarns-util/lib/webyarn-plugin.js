@@ -11,13 +11,26 @@
         addSupportForOneTimeSections(event);
       });
       addSupportForAnchorWithDataLink(style.sheet);
+      addSupportForProceedToNextAfterVideoPlayed();
     }
   };
+  /**
+   * Automatic proceed to next slide  once a video has completed
+   */
+
+  function addSupportForProceedToNextAfterVideoPlayed() {
+    document.querySelectorAll("video[data-auto-next]").forEach(function (v) {
+      v.addEventListener('ended', function (_) {
+        return Reveal.next();
+      });
+    });
+  }
   /**
    * allows for
    * `<a data-link-indexh="1">link to slide</a>`
    * @param webyarnsCSS
    */
+
 
   function addSupportForAnchorWithDataLink(webyarnsCSS) {
     webyarnsCSS.insertRule("a[data-link-indexh] { cursor: pointer }", 0);
@@ -106,7 +119,8 @@
     if (!prevSlide) return;
     var onetime = prevSlide.getAttribute("data-one-time");
     if (onetime) prevSlide.setAttribute("data-hidden-section", "true");
-  }
+  } // @ts-ignore
+
 
   Reveal.registerPlugin('WebyarnPlugin', plugin);
 })();
