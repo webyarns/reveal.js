@@ -27,7 +27,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   }
 })(function () {
   var audioId = function audioId(s) {
-    return s.startsWith("!") ? s.substring(1) : s;
+    return s.startsWith("!") || s.startsWith(">") || s.startsWith("#") ? s.substring(1) : s;
   };
 
   var partition = function partition(es, fn) {
@@ -69,6 +69,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     }) : [];
   };
 
+  var persistentAudios = [];
+
   var nextAudioActions = function nextAudioActions(currentSounds, nextSounds) {
     var _partition = partition(nextSounds, function (e) {
       return e.startsWith("!");
@@ -77,18 +79,31 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         toRestart = _partition2[0],
         nextToStartIds = _partition2[1];
 
+    var persistentToStop = nextToStartIds.filter(function (e) {
+      return e.startsWith("#");
+    }).map(audioId);
+    var persistentStart = nextToStartIds.filter(function (e) {
+      return e.startsWith(">");
+    }).map(audioId);
+    persistentAudios = [].concat(_toConsumableArray(persistentAudios), _toConsumableArray(persistentStart)); // add to global state
+
     var currentSoundIds = currentSounds.map(audioId);
     var nextSoundsIds = nextSounds.map(audioId);
     var toRestartIds = toRestart.map(audioId);
-    var toStop = currentSoundIds.filter(function (e) {
+    var toStop = [].concat(_toConsumableArray(currentSoundIds.filter(function (e) {
       return !nextToStartIds.includes(e);
     }) // remove the ones that carry over
     .filter(function (e) {
       return !toRestartIds.includes(e);
-    }); // remove the ones that need restarting
-
+    }) // remove the ones that need restarting
+    .filter(function (e) {
+      return persistentAudios.indexOf(e) === -1;
+    })), _toConsumableArray(persistentToStop));
     var toStart = [].concat(_toConsumableArray(nextSoundsIds.filter(function (e) {
       return !currentSoundIds.includes(e);
+    }) // add new ones not carried over
+    .filter(function (e) {
+      return !persistentToStop.includes(e);
     })), _toConsumableArray(toRestartIds));
     return [toStop, toStart];
   };
@@ -121,10 +136,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         audioMap[id].fade(0, 1, fadeValue("fade-in-speed"));
       }
     });
-  };
+  }; // Reveal.addEventListener('ready', soundHandler);
+  // Reveal.addEventListener('slidechanged', soundHandler);
 
-  Reveal.addEventListener('ready', soundHandler);
-  Reveal.addEventListener('slidechanged', soundHandler);
+
   return {
     soundHandler: soundHandler,
     _test: {
