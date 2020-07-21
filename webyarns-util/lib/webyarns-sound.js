@@ -136,10 +136,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         audioMap[id].fade(0, 1, fadeValue("fade-in-speed"));
       }
     });
-  }; // Reveal.addEventListener('ready', soundHandler);
-  // Reveal.addEventListener('slidechanged', soundHandler);
+  };
 
-
+  Reveal.addEventListener('ready', soundHandler);
+  Reveal.addEventListener('slidechanged', soundHandler);
   return {
     soundHandler: soundHandler,
     _test: {

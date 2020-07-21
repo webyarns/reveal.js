@@ -94,7 +94,6 @@
 
         const [toStop, toStart] = nextAudioActions(currentSounds, nextSounds);
 
-
         toStop.map(id => {
             if (!audioMap[id])
                 console.error("no invalid audioMap for " + id)
@@ -113,8 +112,8 @@
 
 
     }
-    // Reveal.addEventListener('ready', soundHandler);
-    // Reveal.addEventListener('slidechanged', soundHandler);
+    Reveal.addEventListener('ready', soundHandler);
+    Reveal.addEventListener('slidechanged', soundHandler);
     return {
         soundHandler,
         _test: {
