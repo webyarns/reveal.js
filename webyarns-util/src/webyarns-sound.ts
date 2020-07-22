@@ -81,7 +81,7 @@
 
     const soundHandler = (e: SlideEvent) => {
         const fadeValue = (a: string) => {
-            const s = e.currentSlide.getAttribute(a);
+            const s = e.currentSlide.getAttribute("data-sounds-"+a) || e.currentSlide.getAttribute(a);
             return s ? parseInt(s, 10) : 1500
         }
 

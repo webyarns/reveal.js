@@ -112,7 +112,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     var _e$previousSlide;
 
     var fadeValue = function fadeValue(a) {
-      var s = e.currentSlide.getAttribute(a);
+      var s = e.currentSlide.getAttribute("data-sounds-" + a) || e.currentSlide.getAttribute(a);
       return s ? parseInt(s, 10) : 1500;
     };
 
