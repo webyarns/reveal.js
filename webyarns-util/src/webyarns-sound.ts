@@ -79,6 +79,19 @@
         return [toStop, toStart]
     }
 
+    function volumeHandler(e: SlideEvent) {
+        const volumeChange = e.currentSlide.getAttribute('data-sounds-volume-change');
+        if (!volumeChange)
+            return
+        console.log(volumeChange)
+        const [id,v] = volumeChange?.split(":");
+        const volume = parseFloat(v)
+        audioMap[id].volume(volume)
+        console.log("increased volume for ",id,"with",volume)
+
+
+    }
+
     const soundHandler = (e: SlideEvent) => {
         const fadeValue = (a: string) => {
             const s = e.currentSlide.getAttribute("data-sounds-"+a) || e.currentSlide.getAttribute(a);
@@ -93,6 +106,8 @@
         const currentSounds = soundData(currentSoundData);
 
         const [toStop, toStart] = nextAudioActions(currentSounds, nextSounds);
+
+        volumeHandler(e)
 
         toStop.map(id => {
             if (!audioMap[id])
