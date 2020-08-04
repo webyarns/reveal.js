@@ -108,6 +108,21 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     return [toStop, toStart];
   };
 
+  function volumeHandler(e) {
+    var volumeChange = e.currentSlide.getAttribute('data-sounds-volume-change');
+    if (!volumeChange) return;
+    console.log(volumeChange);
+
+    var _ref3 = volumeChange === null || volumeChange === void 0 ? void 0 : volumeChange.split(":"),
+        _ref4 = _slicedToArray(_ref3, 2),
+        id = _ref4[0],
+        v = _ref4[1];
+
+    var volume = parseFloat(v);
+    audioMap[id].volume(volume);
+    console.log("increased volume for ", id, "with", volume);
+  }
+
   var soundHandler = function soundHandler(e) {
     var _e$previousSlide;
 
@@ -126,6 +141,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         toStop = _nextAudioActions2[0],
         toStart = _nextAudioActions2[1];
 
+    volumeHandler(e);
     toStop.map(function (id) {
       if (!audioMap[id]) console.error("no invalid audioMap for " + id);else audioMap[id].fade(1, 0, fadeValue('fade-out-speed'));
     });
