@@ -83,11 +83,9 @@
         const volumeChange = e.currentSlide.getAttribute('data-sounds-volume-change');
         if (!volumeChange)
             return
-        console.log(volumeChange)
         const [id,v] = volumeChange?.split(":");
         const volume = parseFloat(v)
         audioMap[id].volume(volume)
-        console.log("increased volume for ",id,"with",volume)
 
 
     }
