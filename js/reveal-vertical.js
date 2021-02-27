@@ -4,6 +4,9 @@
  * MIT licensed
  *
  * Copyright (C) 2019 Hakim El Hattab, http://hakim.se
+ *
+ * Webyarns version: webyarns-3.8.0.3-vertical
+ * - slide left/right works as space on desktop
  */
 (function( root, factory ) {
 	if( typeof define === 'function' && define.amd ) {
@@ -26,7 +29,7 @@
 	var Reveal;
 
 	// The reveal.js version
-	var VERSION = 'webyarns-3.8.0.3';
+	var VERSION = 'webyarns-3.8.0.3-vertical';
 
 	var SLIDES_SELECTOR = '.slides section',
 		HORIZONTAL_SLIDES_SELECTOR = '.slides>section',
@@ -5369,7 +5372,6 @@
 
 			var currentX = event.touches[0].clientX;
 			var currentY = event.touches[0].clientY;
-
 			// There was only one touch point, look for a swipe
 			if( event.touches.length === 1 && touch.startCount !== 2 ) {
 
@@ -5378,20 +5380,21 @@
 
 				if( deltaX > touch.threshold && Math.abs( deltaX ) > Math.abs( deltaY ) ) {
 					touch.captured = true;
-					navigateLeft();
+					navigatePrev();
 				}
 				else if( deltaX < -touch.threshold && Math.abs( deltaX ) > Math.abs( deltaY ) ) {
 					touch.captured = true;
-					navigateRight();
+					navigateNext();
+					// navigateRight();
 				}
-				else if( deltaY > touch.threshold ) {
+/*				else if( deltaY > touch.threshold ) {
 					touch.captured = true;
 					navigateUp();
 				}
 				else if( deltaY < -touch.threshold ) {
 					touch.captured = true;
 					navigateDown();
-				}
+				}*/
 
 				// If we're embedded, only block touch events if they have
 				// triggered an action
