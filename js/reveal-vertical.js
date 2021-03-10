@@ -5008,7 +5008,8 @@
 
 				if( previousSlide ) {
 					var v = ( previousSlide.querySelectorAll( 'section' ).length - 1 ) || undefined;
-					var h = indexh - 1;
+					// var h = indexh - 1;
+					var h = indexh - Webyarns.noOfHiddenLeft(currentSlide) - 1
 					slide( h, v );
 				}
 			}

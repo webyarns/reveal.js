@@ -21,40 +21,40 @@
 <body>
 <div class="reveal">
 	<div class="slides">
-		<section>
+		<section id="0">
 			<h1>Start</h1>
 		</section>
-		<section>
+		<section id="1">
 			<h1>Slide 2 (<code>hindex=1)</code></h1>
 		</section>
-		<section>
+		<section id="3">
 			<h1>Next Slide is hidden</h1>
 		</section>
-		<section data-hidden-section>
+		<section id="4" data-hidden-section>
 			<code>[data-hidden-section]</code>
 		</section>
-		<section>
+		<section id="5">
 			<h1>Next slide is right only</h1>
 		</section>
-		<section data-right-only-section>
+		<section id="6" data-right-only-section>
 			<code>data-right-only-section</code>
 		</section>
-		<section>
+		<section id="7">
 			<h1>Previous was right only</h1>
 		</section>
-		<section data-next-slide-idx="1">
+		<section id="8" data-next-slide-idx="1">
 			<h2>This one has a <code>data-next-slide-idx=1</code></h2>
 		</section>
-		<section data-auto-move-to="1" data-auto-move-time-sec="5">
+		<section id="9" data-auto-move-to="1" data-auto-move-time-sec="5">
 			<h2>Slide will move automatically move</h2>
 			<h3><code>data-auto-move-to="1"</code></h3>
 			<h4>By default after 3sec, in this case:</h4>
 			<h4><code>data-auto-move-time-sec="5"</code></h4>
 		</section>
-		<section>
+		<section id="10">
 			<h2>Link to <a data-link-indexh="1"><code>data-link-indexh="1"</code></a></h2>
 		</section>
-		<section id="some-verticals-stack" title="some-verticals">
+		<section id="11" id="some-verticals-stack" title="some-verticals">
 			<section id="some-verticals">
 				<h1>some-verticals</h1>
 			</section>
@@ -68,7 +68,7 @@
 			    <h1>bottom</h1>
 			</section>
 		</section>
-		<section>
+		<section id="12">
 			<h1>End</h1>
 		</section>
 
@@ -83,6 +83,7 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				navigationMode: 'linear',
 				dependencies: [
 					{ src: 'webyarns-util/lib/webyarn-plugin.js' },
 					{ src: 'plugin/markdown/marked.js' },
