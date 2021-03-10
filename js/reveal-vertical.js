@@ -5,7 +5,7 @@
  *
  * Copyright (C) 2019 Hakim El Hattab, http://hakim.se
  *
- * Webyarns version: webyarns-3.8.0.3-vertical
+ * Webyarns version: webyarns-3.8.0.5-vertical
  * - slide left/right works as space on desktop
  */
 (function( root, factory ) {
@@ -29,7 +29,7 @@
 	var Reveal;
 
 	// The reveal.js version
-	var VERSION = 'webyarns-3.8.0.3-vertical';
+	var VERSION = 'webyarns-3.8.0.5-vertical';
 
 	var SLIDES_SELECTOR = '.slides section',
 		HORIZONTAL_SLIDES_SELECTOR = '.slides>section',
