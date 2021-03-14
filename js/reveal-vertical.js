@@ -5,7 +5,7 @@
  *
  * Copyright (C) 2019 Hakim El Hattab, http://hakim.se
  *
- * Webyarns version: webyarns-3.8.0.5-vertical
+ * Webyarns version: webyarns-3.8.0.6-vertical
  * - slide left/right works as space on desktop
  */
 (function( root, factory ) {
@@ -29,7 +29,7 @@
 	var Reveal;
 
 	// The reveal.js version
-	var VERSION = 'webyarns-3.8.0.5-vertical';
+	var VERSION = 'webyarns-3.8.0.6-vertical';
 
 	var SLIDES_SELECTOR = '.slides section',
 		HORIZONTAL_SLIDES_SELECTOR = '.slides>section',
@@ -5000,15 +5000,17 @@
 				var previousSlide;
 
 				if( config.rtl ) {
-					previousSlide = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR + '.future' ) ).pop();
+					previousSlide = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR  + '.future' ) ).pop();
 				}
 				else {
-					previousSlide = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR + '.past' ) ).pop();
+					// Webyarns get prev slide taking into account hidden sections
+					previousSlide = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR
+						+ ":not([data-right-only-section]):not([data-hidden-section])" + '.past' ) ).pop();
 				}
 
 				if( previousSlide ) {
 					var v = ( previousSlide.querySelectorAll( 'section' ).length - 1 ) || undefined;
-					// var h = indexh - 1;
+					//Webyarns get previous horizontal index taking into account hidden slides (was `h = indexh - 1`)
 					var h = indexh - Webyarns.noOfHiddenLeft(currentSlide) - 1
 					slide( h, v );
 				}

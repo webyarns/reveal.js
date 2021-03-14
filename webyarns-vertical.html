@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>reveal.js</title>
+    <title>reveal vertical test</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/black.css">
@@ -41,23 +41,39 @@
     <div class="slides">
         <section>
             <h1>Start</h1>
+            <h2>1</h2>
         </section>
-        <section data-autoslide="200">
-            <h1>data autoslide 200</h1>
-        </section>
-		<section id="stack-stack" title="stack">
-			<section id="stack">
-				<h1>stack</h1>
-			</section>
-			<section>
-			    <h1>down 1</h1>
-			</section>
-			<section>
-			    <h1>down 2</h1>
-			</section>
-		</section>
         <section>
-            <h1>Last</h1>
+            <h1>2</h1>
+        </section>
+        <!--<section data-autoslide="200">
+            <h1>data autoslide 200</h1>
+        </section>-->
+        <section id="stack-stack" title="stack">
+            <section id="stack">
+                <h1>stack</h1>
+                <h2>3.1</h2>
+            </section>
+            <section>
+                <h1>down 1</h1>
+                <h2>3.2</h2>
+            </section>
+            <section>
+                <h1>down 2</h1>
+                <h2>3.3</h2>
+            </section>
+        </section>
+
+        <section data-right-only-section data-autoslide="700">
+            <h1>Prev was vert</h1>
+            <h2>this is <code>right-only</code> and <code>data-autoslide="700"</code></h2>
+        </section>
+        <section>
+            <h2>4</h2>
+        </section>
+
+        <section>
+            <h1>5</h1>
         </section>
     </div>
 </div>
@@ -70,6 +86,7 @@
     // - https://github.com/hakimel/reveal.js#dependencies
     Reveal.initialize({
         autoSlideStoppable: false,
+        navigationMode: "linear",
         dependencies: [
             {src: 'webyarns/lib/webyarn-plugin.js'},
             {src: 'plugin/markdown/marked.js'},
