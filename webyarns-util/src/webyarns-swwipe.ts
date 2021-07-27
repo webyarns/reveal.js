@@ -27,6 +27,7 @@ interface ImageObject {
     aspect: number;
     img: HTMLImageElement;
     noResize: boolean;
+    dimensions : {"width": number,"height": number}
 }
 
 class SWWipe {
@@ -65,6 +66,10 @@ class SWWipe {
             const fadeWidth = img.hasAttribute("data-fadeWidth") ? Number(img.getAttribute("data-fadeWidth")) : .1;
             const startPercentage = img.hasAttribute("data-startAt") ? Number(img.getAttribute("data-startAt")) : 0;
             const noResize = img.hasAttribute("data-no-resize");
+            const dimensions = {
+                width : img.width,
+                height : img.height,
+            }
             return {
                 img,
                 aspect,
@@ -73,7 +78,8 @@ class SWWipe {
                 fadeType,
                 fadeWidth,
                 startPercentage,
-                noResize
+                noResize,
+                dimensions
             }
         })
 
@@ -308,8 +314,8 @@ class SWWipe {
 
     private _draw(i: ImageObject, ctx: CanvasRenderingContext2D){
         if (i.noResize) {
-            const h = i.img.height
-            const w = i.img.width
+            const h = i.dimensions.height
+            const w = i.dimensions.width
             ctx.drawImage(
                 i.img,
                 this.width / 2 - w / 2,
