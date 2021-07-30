@@ -1,6 +1,6 @@
 {
   "output": {
-    "preamble": "// version 3.8.0.13-vertical"
+    "preamble": "// version 3.8.0.14-beta3-vertical"
   },
   "sourceMap": {
     "url": "inline"
