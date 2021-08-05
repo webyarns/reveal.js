@@ -322,7 +322,6 @@ class SWWipe {
 
     private _draw(i: ImageObject, ctx: CanvasRenderingContext2D, otherCtx: CanvasRenderingContext2D) {
         if (i.proportional) {
-            ctx.save()
             const canvasWidthMiddle = ctx.canvas.width / 2;
             const canvasHeightMiddle = ctx.canvas.height / 2;
             const g = ctx.createRadialGradient(canvasWidthMiddle, canvasHeightMiddle, 0, canvasWidthMiddle, canvasHeightMiddle, Math.max(canvasWidthMiddle, canvasHeightMiddle))
@@ -557,4 +556,6 @@ if (!Element.prototype.closest) {
         return null;
     };
 }
+
+
 
