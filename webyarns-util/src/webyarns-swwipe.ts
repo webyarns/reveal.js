@@ -428,8 +428,9 @@ class SWWipeStatic {
         const context = this._canvas.getContext("2d")
         if (context === null) throw Error("2d context not supported")
         this._context = context;
-      this._context.globalCompositeOperation = "source-over";
-        this.img.addEventListener("load",()=> this.draw())
+        this._context.imageSmoothingEnabled = false
+        this._context.globalCompositeOperation = "source-over";
+        this.img.addEventListener("load", () => this.draw())
         this.draw();
        // window.addEventListener('resize', this.resize);
     }
@@ -471,7 +472,6 @@ class SWWipeStatic {
 
         this.draw();
     };
-
 
 
 }
