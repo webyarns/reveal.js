@@ -1,0 +1,1462 @@
+/*Default for iphone*/
+.reveal div.slide-background {
+    background-size: 95% 100%
+}
+
+.reveal .lg-only, .reveal .sm-only {
+    display: none;
+}
+
+.reveal .xsm-only {
+    display: block;
+}
+
+.rtop4x {
+	   position:relative;
+        z-index: 555;
+        top: 45%;
+    }
+
+.rtop4xx {
+        position: relative;
+        z-index: 555;
+        top: 44%;
+    }
+
+
+
+/* IOS ALL NEW BEGIN */
+
+.reveal h7 {
+	font-family: "ArimoRegular";
+	font-size: 28px;
+      color: #ffffff;
+    font-style: bold;
+
+}
+
+.reveal h7b2 {
+	font-family: "ArimoRegular";
+	font-size: 32px;
+    color:#f8f509;
+    font-style: bold;
+}
+
+.reveal h12a   {
+	color: #ffffff;
+	font-family:"ArimoRegular";
+	font-size: 34px;
+	font-style: bold;
+	text-align: center;
+}
+
+.reveal h12subtitle      {
+	color: #ffffff;
+	font-family:"ArimoRegular";
+	font-size: 46px;
+	font-style: bold;
+	text-align: center;
+
+
+}
+
+.reveal h7b {
+	font-size: 24px;
+    color:#65e9e7;
+
+}
+
+.reveal h8 {
+    margin: 0 0 20px 0;
+    color: #65e9e7;
+    font-family: "Conv_CALIBRI";
+    font-size: 20px;
+    line-height: 0.9em;
+
+}
+
+.reveal h9 {
+
+    color: #ffffff;
+    font-family: "Conv_CALIBRI";
+    font-size: 12px;
+
+    text-shadow: none;
+
+}
+
+.singlespace {
+
+    line-height: 0.3;
+	padding-left: 5%; padding-right: 5%;
+
+}
+
+/*********************************************
+ * IOS LINKS ALL NEW CONTINUED
+ *********************************************/
+.reveal a:not(.image) {
+     color: #ffffff;
+    font-family: "Conv_CALIBRI";
+    font-size: 10px;
+
+    text-shadow: none;
+
+}
+
+.reveal a:not(.image):hover {
+    color: #f143ad;
+    text-shadow: none;
+    border: none;
+}
+
+.reveal .roll span:after {
+    color: #000000;
+    background: #000000;
+}
+
+/* IOS ALL NEW END */
+
+
+
+/*Small devices such as tablets*/
+@media only screen
+and (min-device-width: 768px)
+and (orientation: landscape) {
+
+    .reveal div.slide-background {
+        background-size: 40% 95%
+    }
+
+    .reveal .h9 {
+        font-size: 14px;
+    }
+
+    .reveal .lg-only, .reveal .xsm-only {
+        display: none;
+    }
+
+    .reveal .sm-only {
+        display: block;
+    }
+
+   .rtop4x {
+	   position:relative;
+        z-index: 555;
+        top: 45%;
+    }
+
+	.rtop4xx {
+        position: relative;
+        z-index: 55;
+        top: 45%;
+    }
+
+}
+/*SMALL DEVICES END*/
+
+
+
+/*Larger devices BEGIN (such as desktops)*/
+@media only screen
+and (min-device-width: 1024px)
+ {
+
+    .reveal div.slide-background {
+        background-size: 34% 95%
+    }
+
+    .reveal h6.h9 {
+
+        color: #504105;
+        font-family: "Conv_CALIBRI", sans-serif;
+        font-size: 20px;
+        line-height: 0.5em;
+        text-shadow: none;
+
+    }
+    .reveal .lg-only {
+        display: block;
+    }
+
+    .reveal .sm-only, .reveal .xsm-only {
+        display: none;
+    }
+
+    .rtop4x {
+        position: relative;
+        z-index: 55;
+        top: 45%;
+    }
+
+	.rtop4xx {
+        position: relative;
+        z-index: 55;
+        top: 45%;
+    }
+
+
+
+/* LARGER DEVICES ALL NEW BEGIN */
+
+.reveal h7 {
+	font-family: "ArimoRegular";
+	font-size: 28px;
+      color: #ffffff;
+    font-style: bold;
+
+}
+
+.reveal h7b2 {
+	font-family: "ArimoRegular";
+	font-size: 32px;
+    color:#f8f509;
+    font-style: bold;
+}
+
+.reveal h12a   {
+	color: #ffffff;
+	font-family:"ArimoRegular";
+	font-size: 36px;
+	font-style: bold;
+	text-align: center;
+}
+
+.reveal h12subtitle      {
+	color: #ffffff;
+	font-family:"ArimoRegular";
+	font-size: 46px;
+	font-style: bold;
+	text-align: center;
+
+
+}
+
+
+.reveal h7b {
+	font-size: 20px;
+    color:#65e9e7;
+
+}
+
+.reveal h8 {
+    margin: 0 0 20px 0;
+    color: #65e9e7;
+    font-family: "Conv_CALIBRI";
+    font-size: 18px;
+    line-height: 0.9em;
+
+}
+
+.reveal h9 {
+
+    color: #ffffff;
+    font-family: "Conv_CALIBRI";
+    font-size: 22px;
+
+    text-shadow: none;
+
+}
+
+.singlespace {
+
+    line-height: 0.5;
+	padding-left: 5%; padding-right: 5%;
+
+}
+
+
+
+
+/*********************************************
+ * DESKTOP LINKS ALL NEW CONTINUED
+ *********************************************/
+.reveal a:not(.image) {
+   color: #ffffff;
+    font-family: "Conv_CALIBRI";
+    font-size: 20px;
+    line-height: 0.5em;
+    text-shadow: none;
+}
+
+.reveal a:not(.image):hover {
+    color: #f143ad;
+    text-shadow: none;
+    border: none;
+}
+
+.reveal .roll span:after {
+    color: #000000;
+    background: #000000;
+}
+}
+
+/* LARGER DEVICES ALL NEW END */
+
+
+
+
+/*THIS IS FOR portrait */
+
+/* Default is phones */
+
+.portrait {
+   position: absolute;
+    top: .0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 99;
+
+}
+
+
+.portrait2 {
+    width : 100%;
+    height: 100%;
+}
+
+/*Small devices such as tablets*/
+@media only screen
+and (min-device-width: 768px)
+and (orientation: landscape) {
+
+    .portrait2 {
+        /* override just the attributes you need
+          for positioning on a  tablet */
+		   width : 40%;
+    height: 98%;
+    }
+
+	.portrait {
+   position: absolute;
+    top: 1.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 99;
+
+}
+}
+
+/*Larger devices (such as desktops)*/
+@media only screen
+and (min-device-width: 1024px)
+{
+
+    .portrait {
+        position: absolute;
+        top: 1.0%;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 0px;
+        z-index: -10;
+
+    }
+
+    .portrait2 {
+        /* override just the attributes you need
+          for positioning on a desktop*/
+		  width : 30%;
+    height: 98%;
+
+
+    }
+
+}
+
+
+
+/*THIS IS FOR portraitduplicate */
+
+/* Default is phones */
+
+.portraitduplicate {
+   position: absolute;
+    top: .0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 110;
+
+}
+
+
+.portraitduplicateb {
+    width : 100%;
+    height: 100%;
+}
+
+/*Small devices such as tablets*/
+@media only screen
+and (min-device-width: 768px)
+and (orientation: landscape) {
+
+    .portraitduplicateb {
+        /* override just the attributes you need
+          for positioning on a  tablet */
+		   width : 40%;
+    height: 98%;
+    }
+
+	.portraitduplicate {
+   position: absolute;
+    top: 1.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 110;
+
+}
+}
+
+/*Larger devices (such as desktops)*/
+@media only screen
+and (min-device-width: 1024px)
+{
+
+	.portraitduplicate {
+   position: absolute;
+    top: 1.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 110;
+
+}
+
+    .portraitduplicateb {
+        /* override just the attributes you need
+          for positioning on a desktop*/
+		  width : 30%;
+    height: 98%;
+
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+/*THIS IS FOR portraitduplicate2 */
+
+/* Default is phones */
+
+.portraitduplicate2 {
+   position: absolute;
+    top: .0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 210;
+
+}
+
+
+.portraitduplicate2b {
+    width : 100%;
+    height: 100%;
+}
+
+/*Small devices such as tablets*/
+@media only screen
+and (min-device-width: 768px)
+and (orientation: landscape) {
+
+    .portraitduplicate2b {
+        /* override just the attributes you need
+          for positioning on a  tablet */
+		   width : 40%;
+    height: 98%;
+    }
+
+	.portraitduplicate2 {
+   position: absolute;
+    top: 1.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 210;
+
+}
+}
+
+/*Larger devices (such as desktops)*/
+@media only screen
+and (min-device-width: 1024px)
+{
+
+	.portraitduplicate2 {
+   position: absolute;
+    top: 1.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 210;
+
+}
+
+    .portraitduplicate2b {
+        /* override just the attributes you need
+          for positioning on a desktop*/
+		  width : 30%;
+    height: 98%;
+
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+/*THIS IS FOR tips */
+
+/* Default is phones */
+
+.tips {
+   position: absolute;
+    top: .0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 199;
+
+}
+
+
+.tips2 {
+    width : 100%;
+    height: 100%;
+}
+
+/*Small devices such as tablets*/
+@media only screen
+and (min-device-width: 768px)
+and (orientation: landscape) {
+
+    .tips2 {
+        /* override just the attributes you need
+          for positioning on a  tablet */
+		   width : 40%;
+    height: 98%;
+    }
+
+	.tips {
+   position: absolute;
+    top: 1.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 199;
+
+}
+}
+
+/*Larger devices (such as desktops)*/
+@media only screen
+and (min-device-width: 1024px)
+{
+
+	.tips {
+   position: absolute;
+    top: 1.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 199;
+
+}
+
+    .tips2 {
+        /* override just the attributes you need
+          for positioning on a desktop*/
+		  width : 30%;
+    height: 98%;
+
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.top0 { position:relative; z-index:-2; top:0%;}
+.top01 { position:relative; z-index:55; top:01%;}
+.top02 { position:relative; z-index:-2; top:02%;}
+.top03 { position:relative; z-index:2; top:03%;}
+.top05 { position:relative; z-index:2; top:05%;}
+.top07 { position:relative; z-index: 2; top:07%;}
+.top08 { position:relative; z-index:-2; top:08%;}
+.top10 { position:relative; z-index:-2; top:10%;}
+.top12 { position:relative; z-index:-2; top:12%;}
+.top13 { position:relative; z-index:-2; top:13%;}
+.top15 { position:relative; z-index:-2; top:15%;}
+.top16 { position:relative; z-index:-2; top:16%;}
+.top15b { position:relative; z-index:-2; top:15%; padding-left: 10%; padding-right: 10%;}
+.top18 { position:relative; z-index:55; top:18%;}
+.top18b { position:relative; z-index:55; top:18%; padding-left: 10%; padding-right: 10%;}
+.top20 { position:relative; z-index:55; top:20%;}
+.top20b { position:relative; z-index:55; top:20%; padding-left: 10%; padding-right: 10%;}
+.top23 { position:relative; z-index:55; top:23%;}
+.top23b { position:relative; z-index:55; top:23%; padding-left: 10%; padding-right: 10%;}
+.top24 { position:relative; z-index:55; top:24%;}
+.top24b { position:relative; z-index:55; top:24%; padding-left: 10%; padding-right: 10%;}
+.top25 { position:relative; z-index:55; top:25%;}
+.top25b { position:relative; z-index:55; top:25%; padding-left: 10%; padding-right: 10%;}
+.top27 { position:relative; z-index:55; top:27%;}
+.top27b { position:relative; z-index:55; top:27%; padding-left: 10%; padding-right: 10%;}
+.top28 { position:relative; z-index:55; top:28%;}
+.top28b { position:relative; z-index:55; top:28%; padding-left: 10%; padding-right: 10%;}
+.top30 { position:relative; z-index:55; top:30%;}
+.top30b { position:relative; z-index:55; top:30%; padding-left: 10%; padding-right: 10%;}
+.top33 { position:relative; z-index:55; top:33%;}
+.top33b { position:relative; z-index:55; top:33%; padding-left: 10%; padding-right: 10%;}
+.top35 { position:relative; z-index:55; top:35%;}
+.top35b { position:relative; z-index:555; top:35%; padding-left: 10%; padding-right: 10%;}
+.top36 { position:relative; z-index:555; top:36%;}
+.top36b { position:relative; z-index:555; top:36%; padding-left: 10%; padding-right: 10%;}
+.top37 { position:relative; z-index:555; top:37%;}
+.top38 { position:relative; z-index:555; top:38%;}
+.top38b { position:relative; z-index:555; top:38%; padding-left: 10%; padding-right: 10%;}
+.top39 { position:relative; z-index:555; top:39%;}
+.top40 { position:relative; z-index:55; top:40%;}
+.top40b { position:relative; z-index:555; top:40%; padding-left: 10%; padding-right: 10%; text-align: left;}
+.top41 { position:relative; z-index:555; top:41%;}
+.top41b { position:relative; z-index:555; top:41%; padding-left: 10%; padding-right: 10%;}
+.top40c { position:relative; z-index:-2; top:40%;}
+.top45 { position:relative; z-index:55; top:45%;}
+.top45x { position:relative; z-index:-2; top:45%;}
+.top50 { position:relative; z-index:55; top:50%;}
+
+
+
+/*THIS IS FOR top24ad PLAY BUTTON FOR AD VIDEOS*/
+
+/* Default is phones */
+
+.top24ad {
+position:absolute;
+top:35%;
+left: 0%;
+    bottom: 0%;
+    right: 0%;
+	padding: 0px;
+   z-index: 499;
+   margin-left: auto;
+    margin-right: auto;
+	 width: 70%;
+  height: 70%;
+}
+
+
+
+	.top24ad2 {
+position:absolute;
+top:25%;
+left: 0%;
+    bottom: 0%;
+    right: 0%;
+	padding: 0px;
+   z-index: 399;
+   margin-left: auto;
+    margin-right: auto;
+	 width: 70%;
+  height: 70%;
+  }
+
+
+/*Small devices such as tablets*/
+@media only screen
+and (min-device-width: 768px)
+and (orientation: landscape) {
+
+
+	.top24ad {
+position:absolute;
+top:24%;
+left: 0%;
+    bottom: 0%;
+    right: 0%;
+	padding: 0px;
+   z-index: 499;
+   margin-left: auto;
+    margin-right: auto;
+	 width: 70%;
+  height: 70%;
+  }
+
+
+	.top24ad2 {
+position:absolute;
+top:24%;
+left: 0%;
+    bottom: 0%;
+    right: 0%;
+	padding: 0px;
+   z-index: 399;
+   margin-left: auto;
+    margin-right: auto;
+	 width: 70%;
+  height: 70%;
+  }
+
+
+}
+
+
+/*Larger devices (such as desktops)*/
+@media only screen
+and (min-device-width: 1024px)
+{
+
+
+	.top24ad {
+position:absolute;
+top:24%;
+left: 0%;
+    bottom: 0%;
+    right: 0%;
+	padding: 0px;
+   z-index: 499;
+   margin-left: auto;
+    margin-right: auto;
+	 width: 70%;
+  height: 70%;
+  }
+
+
+	.top24ad2 {
+position:absolute;
+top:24%;
+left: 0%;
+    bottom: 0%;
+    right: 0%;
+	padding: 0px;
+   z-index: 399;
+   margin-left: auto;
+    margin-right: auto;
+	 width: 70%;
+  height: 70%;
+  }
+
+}
+
+
+#scrollTitles {
+    position: absolute;
+    overflow: auto;
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    width: 70%;
+    height: 35%;
+    top: 30%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 0px;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+
+/*********************************************
+ * FOR HOVER GO TO HOVER IN IOS LINKS ALL NEW CONTINUED AND HOVER IN DESKTOP LINKS ALL NEW CONTINUED
+ *********************************************/
+
+a.one:link {color: #6bc1ed;font-size:70%;}
+a.one:visited {color: #6bc1ed;font-size:70%;}
+
+/*TRANSITIONS*/
+.transition {
+   position: absolute;
+    top: 0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 1000;
+
+}
+
+    .transition2 {
+        /* override just the attributes you need
+          for positioning on a desktop*/
+		  width : 100%;
+    height: 100%;
+    }
+
+
+
+
+
+/*THIS IS FOR helmet */
+
+/* Default is phones */
+
+.helmet {
+   position: absolute;
+    top: 30%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 10;
+
+}
+
+
+.helmet2 {
+    width : 100%;
+    height: 75%;
+}
+
+/*Small devices such as tablets*/
+@media only screen
+and (min-device-width: 768px)
+and (orientation: landscape) {
+
+
+	.helmet {
+   position: absolute;
+    top: 0.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 10;
+
+}
+
+	  .helmet2 {
+        /* override just the attributes you need
+          for positioning on a  tablet */
+		  width : 100%;
+    height: 100%;
+    }
+
+}
+
+/*Larger devices (such as desktops)*/
+@media only screen
+and (min-device-width: 1024px)
+{
+
+	.helmet {
+   position: absolute;
+    top: 0.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 10;
+
+}
+
+    .helmet2 {
+        /* override just the attributes you need
+          for positioning on a desktop*/
+		  width : 100%;
+    height: 100%;
+
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+/*THIS IS FOR helmetduplicate */
+
+/* Default is phones */
+
+.helmetduplicate {
+   position: absolute;
+    top: 30%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 110;
+
+}
+
+
+.helmetduplicateb {
+    width : 100%;
+    height: 75%;
+}
+
+/*Small devices such as tablets*/
+@media only screen
+and (min-device-width: 768px)
+and (orientation: landscape) {
+
+	.helmetduplicate {
+   position: absolute;
+    top: 0.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 110;
+
+}
+
+	.helmetduplicateb {
+        /* override just the attributes you need
+          for positioning on a  tablet */
+		  width : 100%;
+    height: 100%;
+    }
+}
+
+
+/*Larger devices (such as desktops)*/
+@media only screen
+and (min-device-width: 1024px)
+{
+
+	.helmetduplicate {
+   position: absolute;
+    top: 0.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 110;
+
+}
+
+    .helmetduplicateb {
+        /* override just the attributes you need
+          for positioning on a desktop*/
+		  width : 100%;
+    height: 100%;
+
+
+    }
+
+}
+
+
+
+
+
+
+
+
+/*THIS IS FOR helmetduplicate2 */
+
+/* Default is phones */
+
+.helmetduplicate2 {
+   position: absolute;
+    top: 30%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 1;
+
+}
+
+
+.helmetduplicate2b {
+    width : 100%;
+    height: 75%;
+}
+
+/*Small devices such as tablets*/
+@media only screen
+and (min-device-width: 768px)
+and (orientation: landscape) {
+
+	.helmetduplicate2 {
+   position: absolute;
+    top: 0.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 1;
+
+}
+
+	.helmetduplicate2b {
+        /* override just the attributes you need
+          for positioning on a  tablet */
+		  width : 100%;
+    height: 100%;
+    }
+}
+
+
+/*Larger devices (such as desktops)*/
+@media only screen
+and (min-device-width: 1024px)
+{
+
+	.helmetduplicate2 {
+   position: absolute;
+    top: 0.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 1;
+
+}
+
+    .helmetduplicate2b {
+        /* override just the attributes you need
+          for positioning on a desktop*/
+		  width : 100%;
+    height: 100%;
+
+
+    }
+
+}
+
+
+
+
+
+
+
+/*THIS IS FOR helmetduplicate3 */
+
+/* Default is phones */
+
+.helmetduplicate3 {
+   position: absolute;
+    top: 30%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 8;
+
+}
+
+
+.helmetduplicate3b {
+    width : 100%;
+    height: 75%;
+}
+
+/*Small devices such as tablets*/
+@media only screen
+and (min-device-width: 768px)
+and (orientation: landscape) {
+
+	.helmetduplicate3 {
+   position: absolute;
+    top: 0.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 8;
+
+}
+
+	.helmetduplicate3b {
+        /* override just the attributes you need
+          for positioning on a  tablet */
+		  width : 100%;
+    height: 100%;
+    }
+}
+
+
+/*Larger devices (such as desktops)*/
+@media only screen
+and (min-device-width: 1024px)
+{
+
+	.helmetduplicate3 {
+   position: absolute;
+    top: 0.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 8;
+
+}
+
+    .helmetduplicate3b {
+        /* override just the attributes you need
+          for positioning on a desktop*/
+		  width : 100%;
+    height: 100%;
+
+
+    }
+
+}
+
+
+
+
+
+
+
+
+/*THIS IS FOR helmetduplicate4 */
+
+/* Default is phones */
+
+.helmetduplicate4 {
+   position: absolute;
+    top: 30%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 200;
+
+}
+
+
+.helmetduplicate4b {
+    width : 100%;
+    height: 75%;
+}
+
+/*Small devices such as tablets*/
+@media only screen
+and (min-device-width: 768px)
+and (orientation: landscape) {
+
+	.helmetduplicate4 {
+   position: absolute;
+    top: 0.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 200;
+
+}
+
+	.helmetduplicate4b {
+        /* override just the attributes you need
+          for positioning on a  tablet */
+		  width : 100%;
+    height: 100%;
+    }
+}
+
+
+/*Larger devices (such as desktops)*/
+@media only screen
+and (min-device-width: 1024px)
+{
+
+	.helmetduplicate4 {
+   position: absolute;
+    top: 0.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 200;
+
+}
+
+    .helmetduplicate4b {
+        /* override just the attributes you need
+          for positioning on a desktop*/
+		  width : 100%;
+    height: 100%;
+
+
+    }
+
+}
+
+
+
+
+/*THIS IS FOR popbutton BOTTOM */
+
+/* Default is phones */
+
+.popbutton {
+   position: absolute;
+   top: 45.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 5110;
+
+}
+
+
+.popbuttonb {
+     width : 80%;
+    height: 70%;
+}
+
+/*Small devices such as tablets*/
+@media only screen
+and (min-device-width: 768px)
+and (orientation: landscape) {
+
+    .popbuttonb {
+        /* override just the attributes you need
+          for positioning on a  tablet */
+		   width : 25%;
+    height: 50%;
+    }
+
+	.popbutton {
+   position: absolute;
+   top: 45.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 5110;
+
+}
+}
+
+/*Larger devices (such as desktops)*/
+@media only screen
+and (min-device-width: 1024px)
+{
+
+	.popbutton {
+   position: absolute;
+    top: 45.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 5110;
+
+}
+
+    .popbuttonb {
+        /* override just the attributes you need
+          for positioning on a desktop*/
+		  width : 25%;
+    height: 50%;
+    }
+}
+
+
+
+
+
+
+
+/*THIS IS FOR popbutton2 TOP */
+
+/* Default is phones */
+
+.popbutton2 {
+   position: absolute;
+   top: 0%;
+    left: 0%;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 5110;
+
+}
+
+
+.popbutton2b {
+    width : 100%;
+    height: 15%;
+}
+
+/*Small devices such as tablets*/
+@media only screen
+and (min-device-width: 768px)
+and (orientation: landscape) {
+
+    .popbutton2b {
+        /* override just the attributes you need
+          for positioning on a  tablet */
+		  width : 15%;
+    height: 15%;
+    }
+
+	.popbutton2 {
+   position: absolute;
+ top: 0%;
+    left: 25%;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 5110;
+
+}
+}
+
+/*Larger devices (such as desktops)*/
+@media only screen
+and (min-device-width: 1024px)
+{
+
+	.popbutton2 {
+   position: absolute;
+    top: 0%;
+    left: 25%;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 5110;
+
+}
+
+    .popbutton2b {
+        /* override just the attributes you need
+          for positioning on a desktop*/
+		  width : 15%;
+    height: 15%;
+    }
+}
+
+
+/*THIS IS FOR popbuttontop */
+
+/* Default is phones */
+
+.popbuttontop {
+   position: absolute;
+   top: 5.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 5110;
+
+}
+
+
+.popbuttontopb {
+     width : 80%;
+    height: 70%;
+}
+
+/*Small devices such as tablets*/
+@media only screen
+and (min-device-width: 768px)
+and (orientation: landscape) {
+
+    .popbuttontopb {
+        /* override just the attributes you need
+          for positioning on a  tablet */
+		   width : 25%;
+    height: 50%;
+    }
+
+	.popbuttontop {
+   position: absolute;
+   top: 5.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 5110;
+
+}
+}
+
+/*Larger devices (such as desktops)*/
+@media only screen
+and (min-device-width: 1024px)
+{
+
+	.popbuttontop {
+   position: absolute;
+    top: 5.0%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	padding: 0px;
+   z-index: 5110;
+
+}
+
+    .popbuttontopb {
+        /* override just the attributes you need
+          for positioning on a desktop*/
+		  width : 25%;
+    height: 50%;
+    }
+}
+
+.progress {
+    pointer-events: auto;
+}
+
+
+
+
+.progress {
+    pointer-events: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
