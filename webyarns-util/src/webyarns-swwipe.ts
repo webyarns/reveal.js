@@ -26,9 +26,7 @@ interface ImageObject {
     fadeDuration: number;
     aspect: number;
     img: HTMLImageElement;
-    proportional: boolean;
-    widthScale: number;
-    heightScale: number;
+    contain: boolean;
     dimensions: { "width": number, "height": number }
 }
 
@@ -67,9 +65,7 @@ class SWWipe {
             const fadeType = img.hasAttribute("data-fadeType") ? img.getAttribute("data-fadeType") : "cross-lr";
             const fadeWidth = img.hasAttribute("data-fadeWidth") ? Number(img.getAttribute("data-fadeWidth")) : .1;
             const startPercentage = img.hasAttribute("data-startAt") ? Number(img.getAttribute("data-startAt")) : 0;
-            const proportional = img.hasAttribute("data-proportional");
-            const heightScale = img.hasAttribute("data-proportional-height") ? Number(img.getAttribute("data-proportional-height")) : 1;
-            const widthScale = img.hasAttribute("data-proportional-width") ? Number(img.getAttribute("data-proportional-width")) : 1;
+            const contain = img.hasAttribute("data-contain");
 
             const dimensions = {
                 width: img.width,
@@ -83,9 +79,7 @@ class SWWipe {
                 fadeType,
                 fadeWidth,
                 startPercentage,
-                proportional,
-                widthScale,
-                heightScale,
+                contain,
                 dimensions
             }
         })
@@ -97,7 +91,8 @@ class SWWipe {
         if (backContext === null || foreContext === null) throw Error("2d context not supported")
         this._backContext = backContext;
         this._foregroundContext = foreContext;
-
+        this._backContext.imageSmoothingEnabled = false;
+        this._foregroundContext.imageSmoothingEnabled = false;
         window.addEventListener('resize', this.resize);
     }
 
@@ -307,7 +302,7 @@ class SWWipe {
         }
 
 
-        this._foregroundContext.globalCompositeOperation = this.nxtImg.proportional ? "source-atop" : "source-in";
+        this._foregroundContext.globalCompositeOperation = this.nxtImg.contain ? "source-atop" : "source-in";
         this._draw(this.nxtImg, this._foregroundContext, this._backContext)
 
         this._foregroundContext.restore();
@@ -321,7 +316,7 @@ class SWWipe {
     }
 
     private _draw(i: ImageObject, ctx: CanvasRenderingContext2D, otherCtx: CanvasRenderingContext2D) {
-        if (i.proportional) {
+        if (i.contain) {
             const canvasWidthMiddle = ctx.canvas.width / 2;
             const canvasHeightMiddle = ctx.canvas.height / 2;
             const g = ctx.createRadialGradient(canvasWidthMiddle, canvasHeightMiddle, 0, canvasWidthMiddle, canvasHeightMiddle, Math.max(canvasWidthMiddle, canvasHeightMiddle))
@@ -329,16 +324,17 @@ class SWWipe {
             g.addColorStop(1, "#464848")
             ctx.fillStyle = g;
             ctx.fillRect(0, 0, this.width, this.height)
-            const hr = .98;
-            const wr = .333;
-            const h = this.height * i.heightScale
-            const w = this.width * i.widthScale
-            const r = 1
-            ctx.drawImage(
-                i.img,
-                this.width / 2 - w / 2,
-                this.height / 2 - h / 2,
-                w, h)
+
+
+            const {
+                offsetX,
+                offsetY,
+                width,
+                height
+            } = contain(this.width, this.height, i.img.width, i.img.height)
+
+            ctx.drawImage(i.img, offsetX, offsetY, width, height)
+
         } else if (this.aspect > i.aspect) {
 
             ctx.drawImage(i.img,
@@ -405,8 +401,6 @@ class SWWipe {
 
 class SWWipeStatic {
     private readonly img: HTMLImageElement;
-    private heightScale: number;
-    private widthScale: number;
 
     width: number = window.innerWidth;				// width of container (banner)
     height: number = window.innerHeight;				// height of container
@@ -421,8 +415,6 @@ class SWWipeStatic {
             throw Error("Was expecting a single img for static-banner")
         }
         this.img = images[0]
-        this.heightScale = images[0].hasAttribute("data-proportional-height") ? Number(this.img.getAttribute("data-proportional-height")) : 1;
-        this.widthScale = images[0].hasAttribute("data-proportional-width") ? Number(this.img.getAttribute("data-proportional-width")) : 1;
 
         this.banner.appendChild(this._canvas);
         const context = this._canvas.getContext("2d")
@@ -449,14 +441,16 @@ class SWWipeStatic {
         this._context.save();
         this._context.fillStyle = g;
         this._context.fillRect(0, 0, this._context.canvas.width, this._context.canvas.height)
-        const h = this.height * this.heightScale
-        const w = this.width * this.widthScale
-        this._context.restore();
-        this._context.drawImage(
-            this.img,
-            this.width / 2 - w / 2,
-            this.height / 2 - h / 2,
-            w, h)
+
+        const {
+            offsetX,
+            offsetY,
+            width,
+            height
+        } = contain(this.width, this.height, this.img.width, this.img.height)
+
+        this._context.drawImage(this.img, offsetX, offsetY, width, height)
+
 
 
     }
@@ -557,5 +551,26 @@ if (!Element.prototype.closest) {
     };
 }
 
+
+
+const contain = (canvasWidth: number, canvasHEight: number, imgWidth: number, imgHeight: number, offsetX = 0.5, offsetY = 0.5) => {
+    const childRatio = imgWidth / imgHeight
+    const parentRatio = canvasWidth / canvasHEight
+    let width = canvasWidth
+    let height = canvasHEight
+
+    if (childRatio > parentRatio) {
+        height = width / childRatio
+    } else {
+        width = height * childRatio
+    }
+
+    return {
+        width,
+        height,
+        offsetX: (canvasWidth - width) * offsetX,
+        offsetY: (canvasHEight - height) * offsetY
+    }
+};
 
 
