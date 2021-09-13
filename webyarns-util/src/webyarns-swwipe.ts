@@ -27,6 +27,7 @@ interface ImageObject {
     aspect: number;
     img: HTMLImageElement;
     contain: boolean;
+    scale: number;
     dimensions: { "width": number, "height": number }
 }
 
@@ -66,6 +67,7 @@ class SWWipe {
             const fadeWidth = img.hasAttribute("data-fadeWidth") ? Number(img.getAttribute("data-fadeWidth")) : .1;
             const startPercentage = img.hasAttribute("data-startAt") ? Number(img.getAttribute("data-startAt")) : 0;
             const contain = img.hasAttribute("data-contain");
+            const scale = img.hasAttribute("data-scale") ? Number(img.getAttribute("data-scale")) : 1;
 
             const dimensions = {
                 width: img.width,
@@ -80,6 +82,7 @@ class SWWipe {
                 fadeWidth,
                 startPercentage,
                 contain,
+                scale,
                 dimensions
             }
         })
@@ -331,7 +334,7 @@ class SWWipe {
                 offsetY,
                 width,
                 height
-            } = contain(this.width, this.height, i.img.width, i.img.height)
+            } = contain(this.width, this.height, i.img.width, i.img.height, i.scale)
 
             ctx.drawImage(i.img, offsetX, offsetY, width, height)
 
@@ -405,7 +408,7 @@ class SWWipeStatic {
     width: number = window.innerWidth;				// width of container (banner)
     height: number = window.innerHeight;				// height of container
 
-
+    scale: number;
     private readonly _canvas: HTMLCanvasElement = document.createElement('canvas');
     private readonly _context: CanvasRenderingContext2D;
 
@@ -423,6 +426,7 @@ class SWWipeStatic {
         this._context.imageSmoothingEnabled = false
         this._context.globalCompositeOperation = "source-over";
         this.img.addEventListener("load", () => this.draw())
+        this.scale = this.img .hasAttribute("data-scale") ? Number(this.img.getAttribute("data-scale")) : 1;
         this.draw();
        // window.addEventListener('resize', this.resize);
     }
@@ -441,13 +445,12 @@ class SWWipeStatic {
         this._context.save();
         this._context.fillStyle = g;
         this._context.fillRect(0, 0, this._context.canvas.width, this._context.canvas.height)
-
         const {
             offsetX,
             offsetY,
             width,
             height
-        } = contain(this.width, this.height, this.img.width, this.img.height)
+        } = contain(this.width, this.height, this.img.width, this.img.height, this.scale)
 
         this._context.drawImage(this.img, offsetX, offsetY, width, height)
 
@@ -553,11 +556,11 @@ if (!Element.prototype.closest) {
 
 
 
-const contain = (canvasWidth: number, canvasHEight: number, imgWidth: number, imgHeight: number, offsetX = 0.5, offsetY = 0.5) => {
+const contain = (canvasWidth: number, canvasHEight: number, imgWidth: number, imgHeight: number, scale: number = 1,offsetX = 0.5, offsetY = 0.5) => {
     const childRatio = imgWidth / imgHeight
     const parentRatio = canvasWidth / canvasHEight
-    let width = canvasWidth
-    let height = canvasHEight
+    let width = canvasWidth * scale
+    let height = canvasHEight * scale
 
     if (childRatio > parentRatio) {
         height = width / childRatio
