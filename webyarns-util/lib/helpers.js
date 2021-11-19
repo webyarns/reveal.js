@@ -71,10 +71,14 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   };
 
   var noOfHiddenLeft = function noOfHiddenLeft(e) {
+    if (e.getAttribute("data-autoslide"))
+      return 0
     return countPrev(e, ["data-right-only-section"].concat(genericHidingElements));
   };
 
   var noOfHiddenRight = function noOfHiddenRight(e) {
+    if (e.getAttribute("data-autoslide"))
+      return 0
     return countNext(e, ["data-left-only-section"].concat(genericHidingElements));
   };
   /******
