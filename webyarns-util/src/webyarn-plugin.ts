@@ -1,4 +1,5 @@
 /// <reference path ="../../node_modules/@types/reveal/index.d.ts"/>
+
 (function () {
 
     const plugin = {
@@ -9,6 +10,7 @@
                 addSupportForTimedSections(event)
                 addSupportForOneTimeSections(event)
                 addSupportForUnhideSections(event)
+                addSupportToHideControls(event)
             });
             addSupportForAnchorWithDataLink(style.sheet as CSSStyleSheet);
             addSupportForProceedToNextAfterVideoPlayed()
@@ -137,6 +139,21 @@
                 break
             default:
                 console.error(`webyarn's @data-unhide unknown value ${unhide}, must be one of: "toggle" | "once" | ""`, )
+        }
+    }
+
+    /**
+     * syntax: data-hide-controls
+     *
+     * hides controls on slide
+     * @param event
+     */
+    function addSupportToHideControls(event: SlideEvent) {
+        const controls = document.querySelector<HTMLElement>(".controls")
+        if (controls && event.currentSlide.hasAttribute("data-hide-controls")){
+            controls.style.display = 'none'
+        } else if (controls && event.previousSlide?.hasAttribute("data-hide-controls")){
+            controls.style.display = 'block'
         }
     }
 
