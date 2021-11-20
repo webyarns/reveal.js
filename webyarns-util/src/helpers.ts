@@ -42,8 +42,16 @@
     ];
     const countHiddenSiblings = (fn: (e: Element, names: string[]) => number) => (e: Element) => fn(e, genericHidingElements);
 
-    const noOfHiddenLeft = (e: Element) => countPrev(e, ["data-right-only-section", ...genericHidingElements]);
-    const noOfHiddenRight = (e: Element) => countNext(e, ["data-left-only-section", ...genericHidingElements]);
+    const noOfHiddenLeft = (e: Element) => {
+        if (e.getAttribute("data-autoslide"))
+            return 0
+        return countPrev(e, ["data-right-only-section", ...genericHidingElements]);
+    }
+    const noOfHiddenRight = (e: Element) => {
+        if (e.getAttribute("data-autoslide"))
+            return 0
+        return countNext(e, ["data-left-only-section", ...genericHidingElements]);
+    }
 
 
     /******
@@ -63,14 +71,14 @@
     const lookupIndex = (id: string): number => {
         const slides = document.querySelector(".slides");
         const f = document.getElementById(id);
-        return (slides && f) ?  Array.from(slides.children).indexOf(f) : -1;
+        return (slides && f) ? Array.from(slides.children).indexOf(f) : -1;
     };
 
 
     /******
      * Exports
      ******/
-    const Webyarns  : any = {
+    const Webyarns: any = {
         noOfHiddenLeft,
         noOfHiddenRight,
         getNextSlideIndexH,
