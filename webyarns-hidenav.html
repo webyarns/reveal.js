@@ -17,8 +17,14 @@
 		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
 		document.getElementsByTagName('head')[0].appendChild(link);
 	</script>
+	<style>
+		button.impair {
+			color: red !important;
+		}
+	</style>
 </head>
 <body>
+
 <div class="reveal">
 	<div class="slides">
 		<section>
@@ -27,11 +33,26 @@
 		<section>
 		    <h1>normal slide 1</h1>
 		</section>
-		<section data-hide-controls="">
-		    <h1>slide with hidden nav</h1>
+		<section data-hide-controls>
+		    <h1>slide with <code>data-hide-controls</code></h1>
 		</section>
 		<section>
-			<h1>normal slide 1</h1>
+			<h1>normal slide 2</h1>
+		</section>
+		<section id="keep-left" data-hide-controls="keep-left">
+			<h1>slide with <code>data-hide-controls="keep-left"</code></h1>
+		</section>
+		<section>
+			<h1>normal slide 3</h1>
+		</section>
+	<!--	<section id="keep-left-impair-right" data-hide-controls="keep-left, impair-right">
+			<h1>slide with <code>data-hide-controls="impair-right"</code></h1>
+		</section>
+		<section>
+			<h1>normal slide 3</h1>
+		</section>-->
+		<section>
+		    <h1>end</h1>
 		</section>
 	</div>
 </div>

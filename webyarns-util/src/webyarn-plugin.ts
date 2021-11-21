@@ -138,7 +138,7 @@
                 event.currentSlide.removeAttribute("data-hidden-section")
                 break
             default:
-                console.error(`webyarn's @data-unhide unknown value ${unhide}, must be one of: "toggle" | "once" | ""`, )
+                console.error(`webyarn's @data-unhide unknown value ${unhide}, must be one of: "toggle" | "once" | ""`,)
         }
     }
 
@@ -150,10 +150,42 @@
      */
     function addSupportToHideControls(event: SlideEvent) {
         const controls = document.querySelector<HTMLElement>(".controls")
-        if (controls && event.currentSlide.hasAttribute("data-hide-controls")){
-            controls.style.display = 'none'
-        } else if (controls && event.previousSlide?.hasAttribute("data-hide-controls")){
-            controls.style.display = 'block'
+        let hideOnPrev = event.previousSlide?.hasAttribute("data-hide-controls");
+        let hideOnCurrent = event.currentSlide.hasAttribute("data-hide-controls");
+
+        if (controls && hideOnPrev) {
+            controls.style.display = 'block';
+            controls.querySelectorAll<HTMLButtonElement>("button:not(.navigate-left)").forEach(e => {
+                e.style.display = `block`
+                e.classList.remove("impair")
+            })
+        }
+        if (controls && hideOnCurrent) {
+            let action = event.currentSlide.getAttribute("data-hide-controls");
+            if (!action || action === "") {
+                console.log("here");
+                controls.style.display = 'none'
+
+            } else {
+
+                const actions = action!.split((",")).map(s=>s.trim())
+                if (actions.includes("keep-left")) {
+                    controls.querySelectorAll<HTMLButtonElement>("button:not(.navigate-left)").forEach(e => e.style.display = `none`)
+                }
+              /*  if (actions.includes("impair-right")) {
+                    const rightBtn = controls.querySelector<HTMLButtonElement>(".navigate-right")!
+
+                    setTimeout(()=> {
+                        rightBtn.classList.remove("enabled")
+                        rightBtn.classList.add("impair")
+                        rightBtn.style.display = `block`
+                        rightBtn.style.visibility = `visible`
+                        rightBtn.style.opacity = "1"
+                    },0)
+                }*/
+            }
+
+
         }
     }
 
@@ -179,4 +211,5 @@
     }
 
 
-})()
+})
+()
