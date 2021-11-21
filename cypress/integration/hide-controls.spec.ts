@@ -21,18 +21,18 @@ describe('unhide sections spec', () => {
         verticalBtns.forEach(b=>cy.get(b).should("be.visible"))
     })
 
-    xit("should show left button with `impair-right, keep-left ", () => {
+    it("should show left button with `impair-right, keep-left ", () => {
         cy.visit('/webyarns-hidenav.html#/keep-left-impair-right')
         cy.get(".navigate-left").should("be.visible")
         cy.get(".navigate-right").should("be.visible")
         const rightBtn = cy.get(".navigate-right")
         rightBtn.should("have.css","color","rgb(255, 0, 0)")
-        rightBtn.click()
+        rightBtn.click({force: true})
         cy.currentSlide().should('have.id',"keep-left-impair-right")
 
     })
 
-    xit("should undo show left button with `impair-right, keep-left ", () => {
+    it("should undo show left button with `impair-right, keep-left ", () => {
         cy.visit('/webyarns-hidenav.html#/keep-left-impair-right')
         // Check undo
         cy.nextSlide();

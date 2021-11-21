@@ -158,6 +158,7 @@
             controls.querySelectorAll<HTMLButtonElement>("button:not(.navigate-left)").forEach(e => {
                 e.style.display = `block`
                 e.classList.remove("impair")
+                e.disabled = false
             })
         }
         if (controls && hideOnCurrent) {
@@ -172,7 +173,7 @@
                 if (actions.includes("keep-left")) {
                     controls.querySelectorAll<HTMLButtonElement>("button:not(.navigate-left)").forEach(e => e.style.display = `none`)
                 }
-              /*  if (actions.includes("impair-right")) {
+                if (actions.includes("impair-right")) {
                     const rightBtn = controls.querySelector<HTMLButtonElement>(".navigate-right")!
 
                     setTimeout(()=> {
@@ -181,8 +182,9 @@
                         rightBtn.style.display = `block`
                         rightBtn.style.visibility = `visible`
                         rightBtn.style.opacity = "1"
+                        rightBtn.disabled = true
                     },0)
-                }*/
+                }
             }
 
 
