@@ -18,7 +18,7 @@
     "tsc-webyarns": "tsc",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "serve": "http-server  -a 0.0.0.0 -p 8080  ."
+    "serve": "http-server -c-1  -a 0.0.0.0 -p 8080  ."
   },
   "author": {
     "name": "Hakim El Hattab",
@@ -41,6 +41,7 @@
     "@types/node": "^14.17.34",
     "@types/reveal": "^3.3.33",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "cy-mobile-commands": "^0.3.0",
     "cypress": "^9.0.0",
     "express": "^4.16.2",
     "grunt": "^1.0.4",
