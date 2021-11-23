@@ -11,6 +11,7 @@
                 addSupportForOneTimeSections(event)
                 addSupportForUnhideSections(event)
                 addSupportToHideControls(event)
+                addSupportToHideOtherSections(event)
             });
             addSupportForAnchorWithDataLink(style.sheet as CSSStyleSheet);
             addSupportForProceedToNextAfterVideoPlayed()
@@ -169,21 +170,21 @@
 
             } else {
 
-                const actions = action!.split((",")).map(s=>s.trim())
+                const actions = action!.split((",")).map(s => s.trim())
                 if (actions.includes("keep-left")) {
                     controls.querySelectorAll<HTMLButtonElement>("button:not(.navigate-left)").forEach(e => e.style.display = `none`)
                 }
                 if (actions.includes("impair-right")) {
                     const rightBtn = controls.querySelector<HTMLButtonElement>(".navigate-right")!
 
-                    setTimeout(()=> {
+                    setTimeout(() => {
                         rightBtn.classList.remove("enabled")
                         rightBtn.classList.add("impair")
                         rightBtn.style.display = `block`
                         rightBtn.style.visibility = `visible`
                         rightBtn.style.opacity = "1"
                         rightBtn.disabled = true
-                    },0)
+                    }, 0)
                 }
             }
 
@@ -191,13 +192,33 @@
         }
     }
 
+    /**
+     *  syntax data-hide-section="«id»,«id»"
+     * @param event
+     */
+    function addSupportToHideOtherSections(event: SlideEvent) {
+        const a = event.currentSlide.getAttribute("data-hide-section");
+        if (!a)
+            return
+
+        a.split(",").forEach(id => {
+            const section = document.getElementById(id);
+            if (!section)
+                console.warn(`cannot find element with id ${id} to hide`)
+            else
+                section.setAttribute("data-hidden-section", "")
+        })
+
+    }
+
+
     // @ts-ignore
     Reveal.registerPlugin('WebyarnPlugin', plugin);
 
     // Polyfills
     if (!Element.prototype.toggleAttribute) {
-        Element.prototype.toggleAttribute = function(name, force) {
-            if(force !== void 0) force = !!force
+        Element.prototype.toggleAttribute = function (name, force) {
+            if (force !== void 0) force = !!force
 
             if (this.hasAttribute(name)) {
                 if (force) return true;
