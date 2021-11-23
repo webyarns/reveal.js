@@ -5,6 +5,7 @@
     } else {
         // Browser globals.
 
+        // @ts-ignore
         window.Webyarns = factory();
     }
 }((exposeAllForTests: boolean = false) => {
@@ -14,9 +15,8 @@
     const oneOfContainedIn = <T>(a2: Array<T>) => (a1: Array<T>) => a1.some(r => a2.includes(r));
     const containsOneOfAttributes = (names: string[]) => compose(attributeNames, oneOfContainedIn(names));
 
-    const isTouchDevice: boolean = ('ontouchstart' in window) ||
-        (navigator.maxTouchPoints > 0) ||
-        (navigator.msMaxTouchPoints > 0);
+    // @ts-ignore
+    const isTouchDevice: boolean = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
 
     /******
      * Count the number of direct siblings matching a selector,

@@ -7,7 +7,9 @@
         // Browser globals.
         Object.assign(window,factory())
         window.addEventListener("DOMContentLoaded", ()=>{
+            // @ts-ignore
             Reveal.addEventListener('ready', window.autoplayVideo)
+            // @ts-ignore
             Reveal.addEventListener('slidechanged', window.autoplayVideo)
         })
     }
