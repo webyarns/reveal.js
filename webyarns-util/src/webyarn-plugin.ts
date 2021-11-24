@@ -12,6 +12,7 @@
                 addSupportForUnhideSections(event)
                 addSupportToHideControls(event)
                 addSupportToHideOtherSections(event)
+                addSupportToHideAfterVisit(event)
             });
             addSupportForAnchorWithDataLink(style.sheet as CSSStyleSheet);
             addSupportForProceedToNextAfterVideoPlayed()
@@ -211,7 +212,14 @@
 
     }
 
-
+    /**
+     * data-hide-after-visit
+     */
+    function addSupportToHideAfterVisit(event: SlideEvent) {
+        if (event.currentSlide.hasAttribute("data-hide-after-visit")) {
+            event.currentSlide.setAttribute("data-hidden-section", "")
+        }
+    }
     // @ts-ignore
     Reveal.registerPlugin('WebyarnPlugin', plugin);
 
