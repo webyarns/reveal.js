@@ -107,7 +107,7 @@
     }
 
     /**
-     * syntax <section one-time>
+     * syntax data-one-time
      *
      * Section is shown only one time
      */
