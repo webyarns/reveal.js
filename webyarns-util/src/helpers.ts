@@ -44,12 +44,12 @@
 
     const noOfHiddenLeft = (e: Element) => {
         if (e.getAttribute("data-autoslide"))
-            return 0
+            return countPrev(e, ["data-hide-from-autoslide"]);
         return countPrev(e, ["data-right-only-section", ...genericHidingElements]);
     }
     const noOfHiddenRight = (e: Element) => {
         if (e.getAttribute("data-autoslide"))
-            return 0
+            return countNext(e, ["data-hide-from-autoslide"]);
         return countNext(e, ["data-left-only-section", ...genericHidingElements]);
     }
 
