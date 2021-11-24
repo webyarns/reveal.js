@@ -54,17 +54,38 @@
     }
 
 
+    function getIdx(s: string | null) {
+        if (!s) return  null
+        if (s?.startsWith("#")) {
+            const id = s.substring(1);
+            return lookupIndex(id)
+        } else {
+            try {
+                return s ? parseInt(s, 10) : null
+            } catch (e) {
+                throw Error(`data-next-slide-indexh, must be a number, got ${s}`);
+            }
+        }
+    }
+
     /******
      * Support for next-slide-idx
      ******/
 
     const getNextSlideIndexH = (e: Element): number | null => {
         const s = e.getAttribute("data-next-slide-indexh");
-        try {
-            return s ? parseInt(s, 10) : null
-        } catch (e) {
-            throw Error(`data-next-slide-indexh, must be a number, got ${s}`);
-        }
+        return getIdx(s);
+    };
+
+    /******
+     * Support for previous-slide-idx
+     ******/
+
+    const getPrevSlideIndexH = (e: Element): number | null => {
+        const s = e.getAttribute("data-previous-slide-indexh");
+       return getIdx(s);
+
+
     };
 
 
@@ -82,6 +103,7 @@
         noOfHiddenLeft,
         noOfHiddenRight,
         getNextSlideIndexH,
+        getPrevSlideIndexH,
         lookupIndex,
     };
 

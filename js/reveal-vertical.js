@@ -4927,16 +4927,20 @@
 	}
 
 	function navigateLeft() {
-
-		// Reverse for RTL
-		if( config.rtl ) {
-			if( ( isOverview() || nextFragment() === false ) && availableRoutes().left ) {
-                slide( indexh + Webyarns.noOfHiddenLeft(currentSlide) - 1, config.navigationMode === 'grid' ? indexv : undefined );
+		var  prevSlideIdx= Webyarns.getPrevSlideIndexH(currentSlide)
+		if (prevSlideIdx){
+			slide( prevSlideIdx);
+		} else {
+			// Reverse for RTL
+			if (config.rtl) {
+				if ((isOverview() || nextFragment() === false) && availableRoutes().left) {
+					slide(indexh + Webyarns.noOfHiddenLeft(currentSlide) - 1, config.navigationMode === 'grid' ? indexv : undefined);
+				}
 			}
-		}
-		// Normal navigation
-		else if( ( isOverview() || previousFragment() === false ) && availableRoutes().left ) {
-            slide( indexh - Webyarns.noOfHiddenLeft(currentSlide)- 1,  config.navigationMode === 'grid' ? indexv : undefined );
+			// Normal navigation
+			else if ((isOverview() || previousFragment() === false) && availableRoutes().left) {
+				slide(indexh - Webyarns.noOfHiddenLeft(currentSlide) - 1, config.navigationMode === 'grid' ? indexv : undefined);
+			}
 		}
 
 	}
