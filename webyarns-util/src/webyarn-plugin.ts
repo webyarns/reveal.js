@@ -12,6 +12,7 @@
                 addSupportForUnhideSections(event)
                 addSupportToHideControls(event)
                 addSupportToHideOtherSections(event)
+                addSupportToUnHideOtherSections(event)
                 addSupportToHideAfterVisit(event)
             });
             addSupportForAnchorWithDataLink(style.sheet as CSSStyleSheet);
@@ -208,6 +209,25 @@
                 console.warn(`cannot find element with id ${id} to hide`)
             else
                 section.setAttribute("data-hidden-section", "")
+        })
+
+    }
+
+    /**
+     *  syntax data-unhide-section="«id»,«id»"
+     * @param event
+     */
+    function addSupportToUnHideOtherSections(event: SlideEvent) {
+        const a = event.currentSlide.getAttribute("data-unhide-section");
+        if (!a)
+            return
+
+        a.split(",").forEach(id => {
+            const section = document.getElementById(id);
+            if (!section)
+                console.warn(`cannot find element with id ${id} to hide`)
+            else
+                section.removeAttribute("data-hidden-section")
         })
 
     }
