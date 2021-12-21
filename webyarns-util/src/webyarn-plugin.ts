@@ -251,7 +251,7 @@
         let attributeName = "data-unlock-after-visited";
         document.querySelectorAll(`section[${attributeName}]`)
             .forEach(e => {
-                const unlockSections = e.getAttribute(attributeName)!.split(",")
+                const unlockSections = e.getAttribute(attributeName)!.split("&").map(s=>s.trim())
                 unlockSections.forEach(id => {
                     const sectionToUnlockId = e.getAttribute("id");
                     if (!sectionToUnlockId)
@@ -277,12 +277,12 @@
                     const sectionToUnhide = document.getElementById(sectionToUnhideId)!;
                     const sectionsToVisitRemaining = sectionToUnhide
                         .getAttribute(attributeName)!
-                        .split((",")).filter(s=>s!=id)
+                        .split(("&")).map(s=>s.trim()).filter(s=>s!=id)
                     if (sectionsToVisitRemaining.length ===0){
                         sectionToUnhide.removeAttribute(attributeName)
                         sectionToUnhide.removeAttribute("data-hidden-section")
                     }else
-                      sectionToUnhide.setAttribute(attributeName,sectionsToVisitRemaining.join(","))
+                      sectionToUnhide.setAttribute(attributeName,sectionsToVisitRemaining.join("&"))
                 })
                 data.delete(id)
 
