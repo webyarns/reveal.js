@@ -14,7 +14,9 @@
                 addSupportToHideOtherSections(event)
                 addSupportToUnHideOtherSections(event)
                 addSupportToHideAfterVisit(event)
+
             });
+            addSupportToUnlockAfterVisits()
             addSupportForAnchorWithDataLink(style.sheet as CSSStyleSheet);
             addSupportForProceedToNextAfterVideoPlayed()
 
@@ -167,7 +169,6 @@
         if (controls && hideOnCurrent) {
             let action = event.currentSlide.getAttribute("data-hide-controls");
             if (!action || action === "") {
-                console.log("here");
                 controls.style.display = 'none'
 
             } else {
@@ -240,6 +241,59 @@
             event.currentSlide.setAttribute("data-hidden-section", "")
         }
     }
+
+    /**
+     * data-unlock-after-visited="a,b"
+     */
+    function addSupportToUnlockAfterVisits() {
+
+        const data = new Map<string, Set<string>>()
+        let attributeName = "data-unlock-after-visited";
+        document.querySelectorAll(`section[${attributeName}]`)
+            .forEach(e => {
+                const unlockSections = e.getAttribute(attributeName)!.split(",")
+                unlockSections.forEach(id => {
+                    const sectionToUnlockId = e.getAttribute("id");
+                    if (!sectionToUnlockId)
+                        console.error(`section with [${attributeName}] requires an id`)
+                    else {
+                        const set = data.get(id) ?? new Set()
+
+                        set.add(sectionToUnlockId)
+                        data.set(id,set)
+                    }
+                })
+                e.setAttribute("data-hidden-section", "")
+            })
+
+        Reveal.addEventListener('slidechanged', (event: SlideEvent) => {
+
+            const id = event.currentSlide.getAttribute("id")
+
+            if (id && data.has(id)) {
+
+                data.get(id)!.forEach(sectionToUnhideId=>{
+
+                    const sectionToUnhide = document.getElementById(sectionToUnhideId)!;
+                    const sectionsToVisitRemaining = sectionToUnhide
+                        .getAttribute(attributeName)!
+                        .split((",")).filter(s=>s!=id)
+                    if (sectionsToVisitRemaining.length ===0){
+                        sectionToUnhide.removeAttribute(attributeName)
+                        sectionToUnhide.removeAttribute("data-hidden-section")
+                    }else
+                      sectionToUnhide.setAttribute(attributeName,sectionsToVisitRemaining.join(","))
+                })
+                data.delete(id)
+
+            }
+
+        })
+
+
+    }
+
+
     // @ts-ignore
     Reveal.registerPlugin('WebyarnPlugin', plugin);
 
