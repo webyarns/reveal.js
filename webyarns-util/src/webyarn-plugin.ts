@@ -16,7 +16,7 @@
                 addSupportToHideAfterVisit(event)
 
             });
-            addSupportToUnlockAfterVisits()
+            addSupportToLockOrUnlockAfterVisits()
             addSupportForAnchorWithDataLink(style.sheet as CSSStyleSheet);
             addSupportForProceedToNextAfterVideoPlayed()
 
@@ -242,16 +242,68 @@
         }
     }
 
+    enum Action {
+        LOCK, UNLOCK
+    }
+
+
     /**
      * data-unlock-after-visited="a,b"
      */
-    function addSupportToUnlockAfterVisits() {
+    const unlockAttributeName = "data-unlock-after-visited";
+    const lockAttributeName = "data-lock-after-visited";
 
-        const data = new Map<string, Set<string>>()
-        let attributeName = "data-unlock-after-visited";
+    function addSupportToLockOrUnlockAfterVisits() {
+        const unlockData = new Map<string, Set<string>>()
+        const lockData = new Map<string, Set<string>>()
+        _initLockOrUnlockAfterVisits(unlockAttributeName, unlockData, true);
+        _initLockOrUnlockAfterVisits(lockAttributeName, lockData, false);
+        Reveal.addEventListener('slidechanged', (event: SlideEvent) => {
+
+            const id = event.currentSlide.getAttribute("id")
+            if (id) {
+                _checkSections(id, unlockAttributeName, unlockData, Action.UNLOCK)
+                _checkSections(id, lockAttributeName, lockData, Action.LOCK)
+            }
+
+
+        })
+
+    }
+
+    function _checkSections(id: string,  attributeName: string, data: Map<string, Set<string>>, action: Action) {
+        if (data.has(id)) {
+
+            data.get(id)!.forEach(sectionToLockOrUnlockId => {
+
+                try {
+                    const sectionToLockOrUnLock = document.getElementById(sectionToLockOrUnlockId)!;
+                    const sectionsToVisitRemaining = sectionToLockOrUnLock
+                        .getAttribute(attributeName)!
+                        .split(("&")).map(s => s.trim()).filter(s => s != id)
+
+                    if (sectionsToVisitRemaining.length === 0) {
+                        sectionToLockOrUnLock.removeAttribute(attributeName)
+                        if (action == Action.UNLOCK)
+                            sectionToLockOrUnLock.removeAttribute("data-hidden-section")
+                        else
+                            sectionToLockOrUnLock.setAttribute("data-hidden-section", "")
+                    } else
+                        sectionToLockOrUnLock.setAttribute(attributeName, sectionsToVisitRemaining.join("&"))
+                } catch (e) {
+                    throw Error(`error processing ${sectionToLockOrUnlockId}: ${e}`)
+                }
+            })
+            data.delete(id)
+
+        }
+
+    }
+
+    function _initLockOrUnlockAfterVisits(attributeName: string, data: Map<string, Set<string>>, hide: Boolean) {
         document.querySelectorAll(`section[${attributeName}]`)
             .forEach(e => {
-                const unlockSections = e.getAttribute(attributeName)!.split("&").map(s=>s.trim())
+                const unlockSections = e.getAttribute(attributeName)!.split("&").map(s => s.trim())
                 unlockSections.forEach(id => {
                     const sectionToUnlockId = e.getAttribute("id");
                     if (!sectionToUnlockId)
@@ -260,35 +312,12 @@
                         const set = data.get(id) ?? new Set()
 
                         set.add(sectionToUnlockId)
-                        data.set(id,set)
+                        data.set(id, set)
                     }
                 })
-                e.setAttribute("data-hidden-section", "")
+                if (hide)
+                    e.setAttribute("data-hidden-section", "")
             })
-
-        Reveal.addEventListener('slidechanged', (event: SlideEvent) => {
-
-            const id = event.currentSlide.getAttribute("id")
-
-            if (id && data.has(id)) {
-
-                data.get(id)!.forEach(sectionToUnhideId=>{
-
-                    const sectionToUnhide = document.getElementById(sectionToUnhideId)!;
-                    const sectionsToVisitRemaining = sectionToUnhide
-                        .getAttribute(attributeName)!
-                        .split(("&")).map(s=>s.trim()).filter(s=>s!=id)
-                    if (sectionsToVisitRemaining.length ===0){
-                        sectionToUnhide.removeAttribute(attributeName)
-                        sectionToUnhide.removeAttribute("data-hidden-section")
-                    }else
-                      sectionToUnhide.setAttribute(attributeName,sectionsToVisitRemaining.join("&"))
-                })
-                data.delete(id)
-
-            }
-
-        })
 
 
     }
