@@ -44,3 +44,17 @@ describe('data-previous-slide-indexh', () => {
   })
 
 })
+
+
+describe('combined data-previous-slide-indexh and data-next-slide-indexh', () => {
+  it('user should be stuck when going right', () => {
+    cy.visit('webyarns-prev-next-slides.html#/slide-7')
+    cy.previousSlide()
+    cy.currentSlide().should('have.id',"slide-7")
+  })
+  it('user should be stuck when going left', () => {
+    cy.visit('webyarns-prev-next-slides.html#/slide-7')
+    cy.nextSlide()
+    cy.currentSlide().should('have.id',"slide-7")
+  })
+})
