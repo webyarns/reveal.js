@@ -8,5 +8,6 @@ rsync  -auvHzP \
    eabigelowjr@webyarns.com:www/rptest/new-reveal
 
 rsync  -auvHzP \
-   webyarns-util/lib/\
-   /home/rparree/documents/nextcloud-private/shares/alan/webyarns-plugin/
+   webyarns-util/lib\
+   js\
+   /home/rparree/documents/nextcloud-private/shares/alan/webyarns-reveal/
