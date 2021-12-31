@@ -1,4 +1,4 @@
-xdescribe('data-next-slide-indexh', () => {
+describe('data-next-slide-indexh', () => {
 
 
   it('should navigate to specified slide on right', () => {
@@ -23,7 +23,7 @@ xdescribe('data-next-slide-indexh', () => {
 })
 
 
-xdescribe('data-previous-slide-indexh', () => {
+describe('data-previous-slide-indexh', () => {
 
   it('should  navigate to specified slide on right', () => {
     cy.visit('webyarns-prev-next-slides.html#/slide-2')
@@ -47,13 +47,13 @@ xdescribe('data-previous-slide-indexh', () => {
 
 
 describe('combined data-previous-slide-indexh and data-next-slide-indexh', () => {
-  xit('user should be stuck when going right', () => {
+  it('user should be stuck when going right', () => {
     cy.visit('webyarns-prev-next-slides.html#/slide-7')
     cy.nextSlide()
     cy.currentSlide().should('have.id',"slide-7")
   })
 
-  xit('user should be stuck when going left', () => {
+  it('user should be stuck when going left', () => {
     cy.visit('webyarns-prev-next-slides.html#/slide-7')
     cy.previousSlide()
     cy.currentSlide().should('have.id',"slide-7")
@@ -65,7 +65,7 @@ describe('combined data-previous-slide-indexh and data-next-slide-indexh', () =>
     cy.currentSlide().should('have.id',"slide-7")
   })
 
-  xit('user should be stuck swiping right', () => {
+  it('user should be stuck swiping right', () => {
     cy.visit('webyarns-prev-next-slides.html#/slide-7')
     cy.swipeToRight()
     cy.currentSlide().should('have.id',"slide-7")
