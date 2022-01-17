@@ -9,10 +9,15 @@
     }
 }(() => {
 
+    function basicNavKeyBoard(e: KeyboardEvent){
+        return e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === " "
+    }
+
     function disableKeyboardSupport(e: KeyboardEvent){
         return !Reveal.getCurrentSlide().hasAttribute("data-disable-keyboard")
     }
     return {
         disableKeyboardSupport,
+        basicNavKeyBoard,
     }
 }));
