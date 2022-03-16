@@ -2,11 +2,11 @@
 
 (function (factory) {
     if (typeof exports === 'object')
-        module.exports = factory();
+        module.exports = factory(false)();
     else {
-        document.addEventListener("DOMContentLoaded", factory)
+        document.addEventListener("DOMContentLoaded", factory(true))
     }
-}(() => {
+}((addToGlobal: boolean)=>() => {
     type AudioId = string
     const audioId = (s: AudioId): AudioId => (s.startsWith("!") || s.startsWith(">") || s.startsWith("#")) ? s.substring(1) : s;
 
@@ -125,6 +125,11 @@
 
 
     }
+    if (addToGlobal){
+        // @ts-ignore
+        window.audioHandler = soundHandler
+    }
+
     Reveal.addEventListener('ready', soundHandler);
     Reveal.addEventListener('slidechanged', soundHandler);
     return {
