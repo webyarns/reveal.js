@@ -10,4 +10,5 @@ rsync  -auvHzP \
 rsync  -auvHzP \
    webyarns-util/lib\
    js\
+   css \
    /home/rparree/documents/nextcloud-private/shares/alan/webyarns-reveal/
