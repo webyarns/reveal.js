@@ -1,0 +1,75 @@
+html {
+    height: calc(var(--vh, 1vh) * 100);
+}
+body {
+    height: 100%;
+
+}
+
+.preloader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform: -webkit-translate(-50%, -50%);
+    transform: -moz-translate(-50%, -50%);
+    transform: -ms-translate(-50%, -50%);
+    z-index: 99999;
+}
+
+.reveal {
+    opacity: 0;
+}
+
+
+.loader {
+    top: 40%;
+}
+
+ /*Loaders From https://cssloaders.github.io/ */
+.loader-pulsing-dot {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    border-radius: 50%;
+    box-shadow: -10px 8px 0 18px inset #fff;
+    animation: rotate-pulsing-dot 2s ease-in infinite alternate;
+}
+.loader-pulsing-dot::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    bottom: 16px;
+    background: #FF3D00;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    animation: scale-pulsing-dot 1s ease-in infinite alternate;
+}
+@keyframes rotate-pulsing-dot {
+    100% { transform: rotate(750deg)}
+}
+@keyframes scale-pulsing-dot {
+    100% { transform: scale(0.5) translateY(5px)}
+}
+
+/**/
+.loader-spinning-slice {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: #FF3D00;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation-spinning-slice 1s linear infinite;
+}
+
+@keyframes rotation-spinning-slice {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
