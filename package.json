@@ -41,6 +41,7 @@
     "@types/node": "^14.17.34",
     "@types/reveal": "^3.3.33",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "cy-mobile-commands": "^0.3.0",
     "cypress": "^9.2.0",
     "express": "^4.16.2",
@@ -67,8 +68,8 @@
   "license": "MIT",
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.16.0",
-    "@types/howler": "^2.1.1",
-    "howler": "^2.1.2",
+    "@types/howler": "^2.2.6",
+    "howler": "^2.2.3",
     "http-server": "^14.0.0",
     "uglifyjs-folder": "^1.5.4"
   }
