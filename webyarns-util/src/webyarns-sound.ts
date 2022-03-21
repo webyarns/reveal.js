@@ -4,7 +4,7 @@
     if (typeof exports === 'object')
         module.exports = factory(false)();
     else {
-        document.addEventListener("DOMContentLoaded", factory(true))
+        factory(true)()
     }
 }((addToGlobal: boolean)=>() => {
     type AudioId = string
@@ -38,8 +38,19 @@
     const audioMap: AudioMap = Object.keys(data).reduce((acc, id) => {
         const howl = new Howl({
             src: data[id].src,
+            html5: true,
+            autoplay: false,
             loop: Boolean(data[id].loop),
+            // howl: null,
+            onplayerror: function() {
+                console.log("error");
+                howl.once('unlock', function() {
+                    howl.play();
+                });
+            }
         });
+
+
         howl.on("fade", (n) => {
             if (howl.volume() === 0) {
                 howl.stop(n);
@@ -76,6 +87,7 @@
                 .filter(e => !persistentToStop.includes(e)), // remove the ones intended to stop
             ...toRestartIds, // add the ones that need restarted
         ]
+        console.log("toStop:", toStop, "toStart", toStart)
         return [toStop, toStart]
     }
 
@@ -91,6 +103,7 @@
     }
 
     const soundHandler = (e: SlideEvent) => {
+        console.log("handler");
         const fadeValue = (a: string) => {
             const s = e.currentSlide.getAttribute("data-sounds-"+a) || e.currentSlide.getAttribute(a);
             return s ? parseInt(s, 10) : 1500
@@ -104,7 +117,6 @@
         const currentSounds = soundData(currentSoundData);
 
         const [toStop, toStart] = nextAudioActions(currentSounds, nextSounds);
-
         volumeHandler(e)
 
         toStop.map(id => {
@@ -130,8 +142,8 @@
         window.audioHandler = soundHandler
     }
 
-    Reveal.addEventListener('ready', soundHandler);
-    Reveal.addEventListener('slidechanged', soundHandler);
+    // Reveal.addEventListener('ready', soundHandler);
+    // Reveal.addEventListener('slidechanged', soundHandler);
     return {
         soundHandler,
         _test: {
