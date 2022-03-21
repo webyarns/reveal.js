@@ -374,7 +374,6 @@
                 startCount: 0,
                 captured: false,
                 threshold: 40,
-                needToPlay: false
             },
 
             // A key:value map of shortcut keyboard keys and descriptions of
@@ -2927,15 +2926,16 @@
             }
 
             if (slideChanged) {
-                touch.needToPlay = {
-                    'indexh': indexh,
-                    'indexv': indexv,
-                    'previousSlide': previousSlide,
-                    'currentSlide': currentSlide,
-                    'origin': o
-                }; // rp:set flag
 
-
+                if (config.synchronousSlideChange) {
+                    config.synchronousSlideChange({
+                        'indexh': indexh,
+                        'indexv': indexv,
+                        'previousSlide': previousSlide,
+                        'currentSlide': currentSlide,
+                        'origin': o
+                    });
+                }
                 dispatchEvent('slidechanged', {
                     'indexh': indexh,
                     'indexv': indexv,
@@ -5420,16 +5420,7 @@
          * @param {object} event
          */
         function onTouchEnd(event) {
-
             touch.captured = false;
-
-            if (touch.needToPlay)
-                if (config.synchronousSlideChange)
-                    config.synchronousSlideChange(touch.needToPlay);
-
-            touch.needToPlay = false;
-
-
         }
 
         /**
