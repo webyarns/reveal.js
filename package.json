@@ -68,7 +68,6 @@
   "license": "MIT",
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.16.0",
-    "@types/howler": "^2.2.6",
     "howler": "^2.2.3",
     "http-server": "^14.0.0",
     "uglifyjs-folder": "^1.5.4"
