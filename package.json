@@ -11,7 +11,7 @@
     "build": "grunt",
     "webyarns:build:babel": "babel  --extensions '.ts,.js' webyarns-util/src -d webyarns-util/lib",
     "webyarns:build:uglifyjs": "uglifyjs-folder webyarns-util/lib  -e -o webyarns-util/lib/ --pattern \"*.js,!*.min.js\" --config-file=uglify.json ",
-    "webyarns:build:reveal:uglyfy": "uglifyjs-folder js  -e -o js --pattern \"*.js,!*.min.js\" --config-file=uglify.json ",
+    "webyarns:build:reveal-uglyfy": "uglifyjs-folder js  -e -o js --pattern \"*.js,!*.min.js\" --config-file=uglify.json ",
     "webyarns:build": "npm-run-all webyarns:build:*",
     "webyarns:watch": "babel --extensions '.ts,.js'  webyarns-util/src -d webyarns-util/lib --watch --source-maps inline",
     "test-webyarns": "jest",
