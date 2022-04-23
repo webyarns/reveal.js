@@ -24,20 +24,40 @@
 		<section >
 			<h1>Start</h1>
 		</section>
-		<section id="autoslide" data-autoslide="200">
+		<section id="autoslide1" data-autoslide="200">
 			<code>data-autoslide="200"</code>
-			<h1>with next Slide is hidden</h1>
+			<span>with next Slide has </span>
+			<code>data-hide-from-autoslide</code>
 		</section>
-		<section data-hidden-section data-hide-from-autoslide>
-			<code>[data-hidden-section and data-hide-from-autoslide]</code>
+		<section  data-hide-from-autoslide>
+			<code>[data-hide-from-autoslide]</code>
 			<h2>after autoslide</h2>
+			<footer>(should be skipped)</footer>
 		</section>
 		<section id="s3" data-hidden-section>
 			<code>[data-hidden-section]</code>
 			<h2>2nd after autoslide</h2>
 		</section>
-		<section>
-			<h1>End</h1>
+		<section id="autoslide2" data-autoslide="200">
+			<code>data-autoslide="200"</code>
+			<h1>with next Slide is data-hidden-section</h1>
+		</section>
+		<section  id="s4" data-hidden-section>
+			<code>data-hidden-section</code>
+			<h2>after autoslide</h2>
+			<footer>(should be shown)</footer>
+		</section>
+		<section id="autoslide3" data-autoslide="200" data-autoslide-honor-hidden>
+			<code>data-autoslide="200"</code>
+			<h1>with next Slide is data-hidden-section</h1>
+		</section>
+		<section  id="s5" data-hidden-section>
+			<code>data-hidden-section</code>
+			<h2>after autoslide</h2>
+			<footer>(should be hidden)</footer>
+		</section>
+		<section id="s6">
+		    <h1>end</h1>
 		</section>
 
 	</div>
@@ -51,6 +71,7 @@
 	// - https://github.com/hakimel/reveal.js#configuration
 	// - https://github.com/hakimel/reveal.js#dependencies
 	Reveal.initialize({
+		history: true,
 		dependencies: [
 			{ src: 'webyarns-util/lib/webyarn-plugin.js' },
 			{ src: 'plugin/markdown/marked.js' },

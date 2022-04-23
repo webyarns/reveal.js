@@ -43,12 +43,12 @@
     const countHiddenSiblings = (fn: (e: Element, names: string[]) => number) => (e: Element) => fn(e, genericHidingElements);
 
     const noOfHiddenLeft = (e: Element) => {
-        if (e.getAttribute("data-autoslide"))
+        if (e.getAttribute("data-autoslide") && !(e.hasAttribute("data-autoslide-honor-hidden")))
             return countPrev(e, ["data-hide-from-autoslide"]);
         return countPrev(e, ["data-right-only-section", ...genericHidingElements]);
     }
     const noOfHiddenRight = (e: Element) => {
-        if (e.getAttribute("data-autoslide"))
+        if (e.getAttribute("data-autoslide") && !(e.hasAttribute("data-autoslide-honor-hidden")))
             return countNext(e, ["data-hide-from-autoslide"]);
         return countNext(e, ["data-left-only-section", ...genericHidingElements]);
     }

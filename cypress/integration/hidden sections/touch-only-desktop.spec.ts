@@ -1,6 +1,6 @@
 describe('data-touch-only-section', () => {
 
-    it('Should be hidden on non-touch', () => {
+    xit('Should be hidden on non-touch', () => {
         cy.visit('webyarns-touch-dependent.html#/s0')
         cy.nextSlide()
         cy.currentSlide().should('have.id', "s2")
@@ -16,7 +16,7 @@ describe('data-touch-only-section', () => {
 })
 
 
-describe('data-non-touch-only-section', () => {
+xdescribe('data-non-touch-only-section', () => {
 
     it('Should be visible on non-touch', () => {
         cy.visit('webyarns-touch-dependent.html#/s2')
